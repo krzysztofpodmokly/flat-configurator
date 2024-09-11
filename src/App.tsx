@@ -8,20 +8,23 @@ import "./index.css";
 function App() {
   return (
     <Canvas
+      flat
       className="webgl"
       camera={{
-        // fov: 35,
+        fov: 35,
         aspect: window.innerWidth / window.innerHeight,
-        // near: 0.1,
-        // far: 100,
+        near: 0.1,
+        far: 100,
       }}
       shadows
-      gl={{
-        toneMapping: THREE.ACESFilmicToneMapping,
-        antialias: true,
-      }}
+      gl={
+        {
+          // toneMapping: THREE.ACESFilmicToneMapping,
+          // antialias: true,
+        }
+      }
     >
-      <Perf />
+      {/* <Perf /> */}
       <Experience />
     </Canvas>
   );
