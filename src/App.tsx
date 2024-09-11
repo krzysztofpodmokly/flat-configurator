@@ -14,7 +14,7 @@ function App() {
         fov: 35,
         aspect: window.innerWidth / window.innerHeight,
         near: 0.1,
-        far: 100,
+        far: 300,
       }}
       shadows
       gl={
