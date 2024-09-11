@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
-import { Perf } from "r3f-perf";
+// import { Perf } from "r3f-perf";
 import Experience from "./Experience";
 
 import "./index.css";

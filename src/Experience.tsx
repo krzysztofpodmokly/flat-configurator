@@ -21,6 +21,7 @@ import * as THREE from "three";
 import { useControls } from "leva";
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import { TUniform } from "./interfaces";
 
 const Experience = () => {
   const { nodes } = useGLTF("./model/8k/flat-optimized-3.glb");
@@ -41,12 +42,24 @@ const Experience = () => {
     return Array.from({ length: n }, (_, i) => i + 1);
   };
 
-  const diningRoomWallRef = useRef<THREE.Mesh>(null);
-  const bathRoomWallRef = useRef<THREE.Mesh>(null);
-  const corridorWallRef = useRef<THREE.Mesh>(null);
-  const storeRoomWallRef = useRef<THREE.Mesh>(null);
-  const gamingRoomWallRef = useRef<THREE.Mesh>(null);
-  const bedRoomWallRef = useRef<THREE.Mesh>(null);
+  const diningRoomWallRef = useRef<
+    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
+  >(null);
+  const bathRoomWallRef = useRef<
+    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
+  >(null);
+  const corridorWallRef = useRef<
+    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
+  >(null);
+  const storeRoomWallRef = useRef<
+    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
+  >(null);
+  const gamingRoomWallRef = useRef<
+    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
+  >(null);
+  const bedRoomWallRef = useRef<
+    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
+  >(null);
 
   const params = useControls({
     diningRoom: "#abb4ac",
