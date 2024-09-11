@@ -26,7 +26,7 @@ const Experience = () => {
   const { nodes } = useGLTF("./model/8k/flat-optimized-3.glb");
   const bakedTexture = useTexture("./model/8k/baked-8k.jpg");
   bakedTexture.flipY = false;
-  // bakedTexture.colorSpace = SRGBColorSpace;
+  // bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   console.log(nodes);
 
@@ -49,12 +49,12 @@ const Experience = () => {
   const bedRoomWallRef = useRef<THREE.Mesh>(null);
 
   const params = useControls({
-    diningRoom: "#a4f4b8",
-    corridor: "#a4f4b8",
-    bathRoom: "#a4f4b8",
-    storeRoom: "#a4f4b8",
-    gamingRoom: "#a4f4b8",
-    bedRoom: "#a4f4b8",
+    diningRoom: "#abb4ac",
+    corridor: "#ced4da",
+    bathRoom: "#000",
+    storeRoom: "#583101",
+    gamingRoom: "#11455f",
+    bedRoom: "#d8d8d8",
   });
 
   const uniforms = useMemo(
