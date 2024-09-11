@@ -83,7 +83,7 @@ const Experience = () => {
   );
 
   useFrame((state) => {
-    const elapsedTime = state.clock.getElapsedTime();
+    // const elapsedTime = state.clock.getElapsedTime();
 
     if (diningRoomWallRef.current) {
       diningRoomWallRef.current.uniforms.uDiningRoom.value.set(
