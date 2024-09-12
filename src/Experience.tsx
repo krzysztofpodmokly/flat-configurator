@@ -24,15 +24,15 @@ import * as THREE from "three";
 import { useControls } from "leva";
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { TUniform } from "./interfaces";
+// import { TUniform } from "./interfaces";
 
 const Experience = () => {
-  const { nodes } = useGLTF("./model/8k/flat-optimized-3.glb");
+  const { nodes } = useGLTF("./model/8k/flat-optimized-4.glb");
   const bakedTexture = useTexture("./model/8k/baked-8k.jpg");
   bakedTexture.flipY = false;
   // bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
-  // console.log(nodes);
+  console.log(nodes);
 
   const numDiningRoomWalls = 5;
   const numCorridorWalls = 11;
@@ -45,24 +45,14 @@ const Experience = () => {
     return Array.from({ length: n }, (_, i) => i + 1);
   };
 
-  const diningRoomWallRef = useRef<
-    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
-  >(null);
-  const bathRoomWallRef = useRef<
-    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
-  >(null);
-  const corridorWallRef = useRef<
-    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
-  >(null);
-  const storeRoomWallRef = useRef<
-    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
-  >(null);
-  const gamingRoomWallRef = useRef<
-    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
-  >(null);
-  const bedRoomWallRef = useRef<
-    THREE.ShaderMaterial & { uniforms: Record<TUniform, THREE.Uniform> }
-  >(null);
+  const diningRoomWallRef = useRef<THREE.ShaderMaterial>(null);
+  const bathRoomWallRef = useRef<THREE.ShaderMaterial>(null);
+  const corridorWallRef = useRef<THREE.ShaderMaterial>(null);
+  const storeRoomWallRef = useRef<THREE.ShaderMaterial>(null);
+  const gamingRoomWallRef = useRef<THREE.ShaderMaterial>(null);
+  const bedRoomWallRef = useRef<THREE.ShaderMaterial>(null);
+
+  const diningTvRef = useRef<THREE.ShaderMaterial>(null);
 
   const params = useControls({
     diningRoom: "#abb4ac",
@@ -85,8 +75,8 @@ const Experience = () => {
     []
   );
 
-  useFrame(() => {
-    // const elapsedTime = state.clock.getElapsedTime();
+  useFrame((state) => {
+    const elapsedTime = state.clock.getElapsedTime();
 
     if (diningRoomWallRef.current) {
       diningRoomWallRef.current.uniforms.uDiningRoom.value.set(
@@ -115,13 +105,17 @@ const Experience = () => {
     if (bedRoomWallRef.current) {
       bedRoomWallRef.current.uniforms.uBedRoom.value.set(params.bedRoom);
     }
+
+    if (diningTvRef.current) {
+      diningTvRef.current.uniforms.uTime.value = elapsedTime;
+    }
   });
 
   return (
     <>
       <OrbitControls makeDefault />
       <color args={["#201919"]} attach="background" />
-      <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
+      <mesh geometry={(nodes["merged"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
@@ -251,10 +245,14 @@ const Experience = () => {
         );
       })}
 
-      <mesh geometry={(nodes["dining-room-tv"] as THREE.Mesh).geometry}>
+      <mesh geometry={(nodes["Grid"] as THREE.Mesh).geometry}>
         <shaderMaterial
           vertexShader={diningTvVertexShader}
           fragmentShader={diningTvFragmentShader}
+          uniforms={{
+            uTime: new THREE.Uniform(0),
+          }}
+          ref={diningTvRef}
         />
       </mesh>
     </>
