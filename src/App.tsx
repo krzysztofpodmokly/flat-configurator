@@ -4,6 +4,8 @@ import * as THREE from "three";
 import Experience from "./Experience";
 
 import "./index.css";
+import { Environment } from "@react-three/drei";
+// import { Environment, Stage } from "@react-three/drei";
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
       }}
     >
       {/* <Perf /> */}
+      <Environment background preset="sunset" backgroundBlurriness={0.5} />
       <Experience />
     </Canvas>
   );

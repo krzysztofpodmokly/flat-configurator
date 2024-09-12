@@ -17,6 +17,9 @@ import storeRoomVertexShader from "./shaders/storeRoom/vertex.glsl";
 import gamingRoomFragmentShader from "./shaders/gamingRoom/fragment.glsl";
 import gamingRoomVertexShader from "./shaders/gamingRoom/vertex.glsl";
 
+import diningTvFragmentShader from "./shaders/diningTv/fragment.glsl";
+import diningTvVertexShader from "./shaders/diningTv/vertex.glsl";
+
 import * as THREE from "three";
 import { useControls } from "leva";
 import { useMemo, useRef } from "react";
@@ -29,7 +32,7 @@ const Experience = () => {
   bakedTexture.flipY = false;
   // bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
-  console.log(nodes);
+  // console.log(nodes);
 
   const numDiningRoomWalls = 5;
   const numCorridorWalls = 11;
@@ -247,6 +250,13 @@ const Experience = () => {
           </mesh>
         );
       })}
+
+      <mesh geometry={(nodes["dining-room-tv"] as THREE.Mesh).geometry}>
+        <shaderMaterial
+          vertexShader={diningTvVertexShader}
+          fragmentShader={diningTvFragmentShader}
+        />
+      </mesh>
     </>
   );
 };
