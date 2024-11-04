@@ -27,8 +27,8 @@ import { useFrame } from "@react-three/fiber";
 // import { TUniform } from "./interfaces";
 
 const Experience = () => {
-  const { nodes } = useGLTF("./model/8k/flat-optimized-4.glb");
-  const bakedTexture = useTexture("./model/8k/baked-8k.jpg");
+  const { nodes } = useGLTF("./model/8k/flat.glb");
+  const bakedTexture = useTexture("./model/8k/baked.jpg");
   bakedTexture.flipY = false;
   // bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -115,7 +115,7 @@ const Experience = () => {
     <>
       <OrbitControls makeDefault />
       <color args={["#201919"]} attach="background" />
-      <mesh geometry={(nodes["merged"] as THREE.Mesh).geometry}>
+      <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
@@ -245,7 +245,8 @@ const Experience = () => {
         );
       })}
 
-      <mesh geometry={(nodes["Grid"] as THREE.Mesh).geometry}>
+      {/* Dummy plane for perlin noise */}
+      {/* <mesh geometry={(nodes["Grid"] as THREE.Mesh).geometry}>
         <shaderMaterial
           vertexShader={diningTvVertexShader}
           fragmentShader={diningTvFragmentShader}
@@ -254,7 +255,7 @@ const Experience = () => {
           }}
           ref={diningTvRef}
         />
-      </mesh>
+      </mesh> */}
     </>
   );
 };

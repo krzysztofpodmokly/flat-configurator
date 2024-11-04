@@ -5,6 +5,7 @@ import Experience from "./Experience";
 
 import "./index.css";
 import { Environment } from "@react-three/drei";
+import FlatComponent from "./FlatComponent";
 // import { Environment, Stage } from "@react-three/drei";
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
     >
       {/* <Perf /> */}
       <Environment background preset="sunset" backgroundBlurriness={0.5} />
-      <Experience />
+      {/* <Experience /> */}
+      <FlatComponent />
     </Canvas>
   );
 }
