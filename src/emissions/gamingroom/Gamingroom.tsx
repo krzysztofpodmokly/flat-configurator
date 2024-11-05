@@ -5,8 +5,9 @@ import { useMemo, useRef } from "react";
 import gamingRoomFragmentShader from "../../shaders/gamingRoom/fragment.glsl";
 import gamingRoomVertexShader from "../../shaders/gamingRoom/vertex.glsl";
 import { generateArray } from "../../utils";
+import { IEmission } from "../../interfaces";
 
-const Gamingroom = ({ nodes, params }: { nodes: any; params: any }) => {
+const Gamingroom = ({ nodes, params }: IEmission) => {
   const numGamingRoomWalls = 4;
   const gamingRoomWallRef = useRef<THREE.ShaderMaterial>(null);
 

@@ -5,8 +5,9 @@ import { useMemo, useRef } from "react";
 import diningRoomFragmentShader from "../../shaders/diningRoom/fragment.glsl";
 import diningRoomVertexShader from "../../shaders/diningRoom/vertex.glsl";
 import { generateArray } from "../../utils";
+import { IEmission } from "../../interfaces";
 
-const Diningroom = ({ nodes, params }: { nodes: any; params: any }) => {
+const Diningroom = ({ nodes, params }: IEmission) => {
   const numDiningRoomWalls = 3;
   const diningRoomWallRef = useRef<THREE.ShaderMaterial>(null);
 

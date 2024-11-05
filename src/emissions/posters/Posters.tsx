@@ -1,25 +1,20 @@
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
-
-import diningRoomFragmentShader from "../../shaders/diningRoom/fragment.glsl";
-import diningRoomVertexShader from "../../shaders/diningRoom/vertex.glsl";
-import { generateArray } from "../../utils";
 import { useTexture } from "@react-three/drei";
 
+import { generateArray } from "../../utils";
 import gamingPosterFragmentShader1 from "../../shaders/posters/poster1/fragment.glsl";
 import gamingPosterVertexShader1 from "../../shaders/posters/poster1/vertex.glsl";
-
 import gamingPosterFragmentShader2 from "../../shaders/posters/poster2/fragment.glsl";
 import gamingPosterVertexShader2 from "../../shaders/posters/poster2/vertex.glsl";
-
 import gamingPosterFragmentShader3 from "../../shaders/posters/poster3/fragment.glsl";
 import gamingPosterVertexShader3 from "../../shaders/posters/poster3/vertex.glsl";
-
 import posterFragment1 from "../../shaders/posters/poster4/fragment.glsl";
 import posterVertex1 from "../../shaders/posters/poster4/vertex.glsl";
+import { IEmission } from "../../interfaces";
 
-const Posters = ({ nodes, params }: { nodes: any; params: any }) => {
+const Posters = ({ nodes }: IEmission) => {
   const numPictures = 10;
   const posterRef = useRef<THREE.ShaderMaterial>(null);
   const catPosterTexture = useTexture("./textures/cat.jpg");

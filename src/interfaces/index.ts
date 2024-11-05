@@ -1,3 +1,5 @@
+import * as THREE from "three";
+
 export type TUniform =
   | "uDiningRoom"
   | "uCorridor"
@@ -5,3 +7,8 @@ export type TUniform =
   | "uStoreRoom"
   | "uGamingRoom"
   | "uBedRoom";
+
+export interface IEmission {
+  nodes: Record<string, THREE.Object3D>;
+  params: Record<string, string>;
+}

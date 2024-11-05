@@ -5,14 +5,13 @@ import { useMemo, useRef } from "react";
 import bedroomFragmentShader from "../../shaders/bedRoom/fragment.glsl";
 import bedroomVertexShader from "../../shaders/bedRoom/vertex.glsl";
 import { generateArray } from "../../utils";
+import { IEmission } from "../../interfaces";
 
-const Bedroom = ({ nodes, params }: { nodes: any; params: any }) => {
+const Bedroom = ({ nodes, params }: IEmission) => {
   const numBedroomWalls = 4;
   const bedRoomWallRef = useRef<THREE.ShaderMaterial>(null);
 
   useFrame((state) => {
-    // const elapsedTime = state.clock.getElapsedTime();
-
     if (bedRoomWallRef.current) {
       bedRoomWallRef.current.uniforms.uBedRoom.value.set(params.bedRoom);
     }

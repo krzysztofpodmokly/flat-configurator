@@ -5,8 +5,9 @@ import { useMemo, useRef } from "react";
 import corridorFragmentShader from "../../shaders/corridor/fragment.glsl";
 import corridorVertexShader from "../../shaders/corridor/vertex.glsl";
 import { generateArray } from "../../utils";
+import { IEmission } from "../../interfaces";
 
-const Corridor = ({ nodes, params }: { nodes: any; params: any }) => {
+const Corridor = ({ nodes, params }: IEmission) => {
   const numCorridorWalls = 9;
   const corridorWallRef = useRef<THREE.ShaderMaterial>(null);
 

@@ -1,12 +1,13 @@
 import * as THREE from "three";
+import { useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 
 import storeRoomFragmentShader from "../../shaders/storeRoom/fragment.glsl";
 import storeRoomVertexShader from "../../shaders/storeRoom/vertex.glsl";
-import { useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
 import { generateArray } from "../../utils";
+import { IEmission } from "../../interfaces";
 
-const Storeroom = ({ nodes, params }: { nodes: any; params: any }) => {
+const Storeroom = ({ nodes, params }: IEmission) => {
   const numStoreRoomWalls = 4;
   const storeRoomWallRef = useRef<THREE.ShaderMaterial>(null);
 
@@ -28,21 +29,6 @@ const Storeroom = ({ nodes, params }: { nodes: any; params: any }) => {
     []
   );
 
-  // return (
-  //   <mesh
-  //     geometry={(nodes[`storeroom-wall-1`] as THREE.Mesh).geometry}
-  //     position={nodes[`storeroom-wall-1`].position}
-  //     rotation={nodes[`storeroom-wall-1`].rotation}
-  //     scale={nodes[`storeroom-wall-1`].scale}
-  //   >
-  //     <shaderMaterial
-  //       fragmentShader={storeRoomFragmentShader}
-  //       vertexShader={storeRoomVertexShader}
-  //       uniforms={storeRoomUniforms}
-  //       ref={storeRoomWallRef}
-  //     />
-  //   </mesh>
-  // );
   return generateArray(numStoreRoomWalls).map((wallNumber) => {
     return (
       <mesh
