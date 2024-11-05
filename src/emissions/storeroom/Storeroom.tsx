@@ -19,12 +19,9 @@ const Storeroom = ({ nodes, params }: IEmission) => {
     }
   });
 
-  const storeRoomUniforms = useMemo(
+  const uniforms = useMemo(
     () => ({
       uStoreRoom: new THREE.Uniform(new THREE.Color(params.storeRoom)),
-      uGradientLeft: new THREE.Uniform(true),
-      uGradientRight: new THREE.Uniform(false),
-      uGradientBottom: new THREE.Uniform(false),
     }),
     []
   );
@@ -43,7 +40,7 @@ const Storeroom = ({ nodes, params }: IEmission) => {
         <shaderMaterial
           fragmentShader={storeRoomFragmentShader}
           vertexShader={storeRoomVertexShader}
-          uniforms={storeRoomUniforms}
+          uniforms={uniforms}
           ref={storeRoomWallRef}
         />
       </mesh>

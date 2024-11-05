@@ -10,6 +10,7 @@ import Bedroom from "./emissions/bedroom/Bedroom";
 import Gamingroom from "./emissions/gamingroom/Gamingroom";
 import Diningroom from "./emissions/diningroom/Diningroom";
 import Posters from "./emissions/posters/Posters";
+import ComputerDisplays from "./emissions/computerDisplays/ComputerDisplays";
 // import { TUniform } from "./interfaces";
 
 const FlatComponent = () => {
@@ -27,6 +28,8 @@ const FlatComponent = () => {
     bedRoom: "#d8d8d8",
   });
 
+  console.log(nodes);
+
   return (
     <>
       <OrbitControls makeDefault />
@@ -41,6 +44,7 @@ const FlatComponent = () => {
       <Bedroom nodes={nodes} params={params} />
       <Gamingroom nodes={nodes} params={params} />
       <Storeroom nodes={nodes} params={params} />
+      <ComputerDisplays nodes={nodes} params={params} />
 
       {/* DUMMY WALLS */}
       <mesh position={[3.288, 2.843, -1.77]} scale={[0.17, 0.185, 4.26]}>
