@@ -13,13 +13,13 @@ const Bedroom = ({ nodes, params }: IEmission) => {
 
   useFrame((state) => {
     if (bedRoomWallRef.current) {
-      bedRoomWallRef.current.uniforms.uBedRoom.value.set(params.bedRoom);
+      bedRoomWallRef.current.uniforms.uBedRoom.value.set(params?.bedRoom);
     }
   });
 
   const uniforms = useMemo(
     () => ({
-      uBedRoom: new THREE.Uniform(new THREE.Color(params.bedRoom)),
+      uBedRoom: new THREE.Uniform(new THREE.Color(params?.bedRoom)),
     }),
     []
   );

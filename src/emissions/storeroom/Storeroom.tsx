@@ -15,13 +15,13 @@ const Storeroom = ({ nodes, params }: IEmission) => {
     // const elapsedTime = state.clock.getElapsedTime();
 
     if (storeRoomWallRef.current) {
-      storeRoomWallRef.current.uniforms.uStoreRoom.value.set(params.storeRoom);
+      storeRoomWallRef.current.uniforms.uStoreRoom.value.set(params?.storeRoom);
     }
   });
 
   const uniforms = useMemo(
     () => ({
-      uStoreRoom: new THREE.Uniform(new THREE.Color(params.storeRoom)),
+      uStoreRoom: new THREE.Uniform(new THREE.Color(params?.storeRoom)),
     }),
     []
   );

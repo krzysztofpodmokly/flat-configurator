@@ -16,14 +16,14 @@ const Gamingroom = ({ nodes, params }: IEmission) => {
 
     if (gamingRoomWallRef.current) {
       gamingRoomWallRef.current.uniforms.uGamingRoom.value.set(
-        params.gamingRoom
+        params?.gamingRoom
       );
     }
   });
 
   const uniforms = useMemo(
     () => ({
-      uGamingRoom: new THREE.Uniform(new THREE.Color(params.gamingRoom)),
+      uGamingRoom: new THREE.Uniform(new THREE.Color(params?.gamingRoom)),
     }),
     []
   );

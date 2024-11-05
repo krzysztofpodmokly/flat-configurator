@@ -15,13 +15,13 @@ const Corridor = ({ nodes, params }: IEmission) => {
     // const elapsedTime = state.clock.getElapsedTime();
 
     if (corridorWallRef.current) {
-      corridorWallRef.current.uniforms.uCorridor.value.set(params.corridor);
+      corridorWallRef.current.uniforms.uCorridor.value.set(params?.corridor);
     }
   });
 
   const uniforms = useMemo(
     () => ({
-      uCorridor: new THREE.Uniform(new THREE.Color(params.corridor)),
+      uCorridor: new THREE.Uniform(new THREE.Color(params?.corridor)),
     }),
     []
   );
@@ -40,6 +40,7 @@ const Corridor = ({ nodes, params }: IEmission) => {
           vertexShader={corridorVertexShader}
           uniforms={uniforms}
           ref={corridorWallRef}
+          side={THREE.DoubleSide}
         />
       </mesh>
     );

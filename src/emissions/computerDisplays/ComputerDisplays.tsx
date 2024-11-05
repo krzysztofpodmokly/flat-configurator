@@ -7,19 +7,31 @@ import { IEmission } from "../../interfaces";
 import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 
-const ComputerDisplays = ({ nodes, params }: IEmission) => {
+const ComputerDisplays = ({ nodes }: IEmission) => {
   const computerDisplay1 = useRef<THREE.ShaderMaterial>(null);
   const computerDisplay2 = useRef<THREE.ShaderMaterial>(null);
 
+  const graph = useTexture("./textures/graph.jpg");
   const matrixTexture = useTexture("./textures/matrix.webp");
+  graph.wrapS = THREE.RepeatWrapping;
+  graph.wrapT = THREE.RepeatWrapping;
   matrixTexture.wrapS = THREE.RepeatWrapping;
   matrixTexture.wrapT = THREE.RepeatWrapping;
 
-  const uniforms = useMemo(
+  const computerUniforms1 = useMemo(
     () => ({
-      uComputerDisplay: new THREE.Uniform(new THREE.Color(params.storeRoom)),
       uTexture: new THREE.Uniform(matrixTexture),
       uTime: new THREE.Uniform(0),
+      uHorizontal: new THREE.Uniform(false),
+    }),
+    []
+  );
+
+  const computerUniforms2 = useMemo(
+    () => ({
+      uTexture: new THREE.Uniform(graph),
+      uTime: new THREE.Uniform(0),
+      uHorizontal: new THREE.Uniform(true),
     }),
     []
   );
@@ -28,10 +40,11 @@ const ComputerDisplays = ({ nodes, params }: IEmission) => {
     const elapsedTime = state.clock.getElapsedTime();
 
     if (computerDisplay1.current) {
-      computerDisplay1.current.uniforms.uComputerDisplay.value.set(
-        params.storeRoom
-      );
       computerDisplay1.current.uniforms.uTime.value = elapsedTime;
+    }
+
+    if (computerDisplay2.current) {
+      computerDisplay2.current.uniforms.uTime.value = elapsedTime;
     }
   });
 
@@ -39,16 +52,15 @@ const ComputerDisplays = ({ nodes, params }: IEmission) => {
     <>
       <mesh
         geometry={(nodes["computer-display"] as THREE.Mesh).geometry}
-        position={nodes[`computer-display`].position}
-        rotation={nodes[`computer-display`].rotation}
-        scale={nodes[`computer-display`].scale}
+        position={nodes["computer-display"].position}
+        rotation={nodes["computer-display"].rotation}
+        scale={nodes["computer-display"].scale}
       >
         <shaderMaterial
           fragmentShader={computerDisplayFragmentShader}
           vertexShader={computerDisplayVertexShader}
-          uniforms={uniforms}
+          uniforms={computerUniforms1}
           ref={computerDisplay1}
-          // transparent
         />
       </mesh>
       <mesh
@@ -60,7 +72,7 @@ const ComputerDisplays = ({ nodes, params }: IEmission) => {
         <shaderMaterial
           fragmentShader={computerDisplayFragmentShader}
           vertexShader={computerDisplayVertexShader}
-          uniforms={uniforms}
+          uniforms={computerUniforms2}
           ref={computerDisplay2}
         />
       </mesh>

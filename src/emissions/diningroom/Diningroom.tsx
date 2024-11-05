@@ -16,14 +16,14 @@ const Diningroom = ({ nodes, params }: IEmission) => {
 
     if (diningRoomWallRef.current) {
       diningRoomWallRef.current.uniforms.uDiningRoom.value.set(
-        params.diningRoom
+        params?.diningRoom
       );
     }
   });
 
   const uniforms = useMemo(
     () => ({
-      uDiningRoom: new THREE.Uniform(new THREE.Color(params.diningRoom)),
+      uDiningRoom: new THREE.Uniform(new THREE.Color(params?.diningRoom)),
     }),
     []
   );

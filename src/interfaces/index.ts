@@ -10,5 +10,5 @@ export type TUniform =
 
 export interface IEmission {
   nodes: Record<string, THREE.Object3D>;
-  params: Record<string, string>;
+  params?: Record<string, string>;
 }
