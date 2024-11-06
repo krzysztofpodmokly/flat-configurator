@@ -19,13 +19,13 @@ const Posters = ({ nodes }: IEmission) => {
   const posterRef = useRef<THREE.ShaderMaterial>(null);
   const catPosterTexture = useTexture("./textures/cat.jpg");
   const lotrPosterTexture = useTexture("./textures/lotr.jpg");
-  const simpsonsPosterTexture = useTexture("./textures/simpsons.jpg");
   const italyPosterTexture = useTexture("./textures/italy.jpg");
   const ancientCyborgPosterTexture = useTexture("./textures/cyborg.jpg");
   const flamePosterTexture = useTexture("./textures/flame.jpg");
-  const mixerPosterTexture = useTexture("./textures/mixer.jpg");
   const patronusPosterTexture = useTexture("./textures/patronus.jpg");
   const cosmosPosterTexture = useTexture("./textures/cosmos.jpg");
+  const supraPosterTexture = useTexture("./textures/supra.jpg");
+  const skylinePosterTexture = useTexture("./textures/skyline.jpg");
 
   useFrame((state) => {
     const elapsedTime = state.clock.getElapsedTime();
@@ -53,13 +53,23 @@ const Posters = ({ nodes }: IEmission) => {
     },
     {
       id: 2,
-      vertexShader: gamingPosterVertexShader2,
-      fragmentShader: gamingPosterFragmentShader2,
+      vertexShader: posterVertex1,
+      fragmentShader: posterFragment1,
+      uniforms: {
+        ...uniforms,
+        uTexture: new THREE.Uniform(supraPosterTexture),
+        uDelay: new THREE.Uniform(0.07),
+      },
     },
     {
       id: 3,
-      vertexShader: gamingPosterVertexShader1,
-      fragmentShader: gamingPosterFragmentShader1,
+      vertexShader: posterVertex1,
+      fragmentShader: posterFragment1,
+      uniforms: {
+        ...uniforms,
+        uTexture: new THREE.Uniform(skylinePosterTexture),
+        uDelay: new THREE.Uniform(0.05),
+      },
     },
     {
       id: 4,
@@ -68,6 +78,7 @@ const Posters = ({ nodes }: IEmission) => {
       uniforms: {
         ...uniforms,
         uTexture: new THREE.Uniform(lotrPosterTexture),
+        uDelay: new THREE.Uniform(0.01),
       },
     },
     {
@@ -77,6 +88,7 @@ const Posters = ({ nodes }: IEmission) => {
       uniforms: {
         ...uniforms,
         uTexture: new THREE.Uniform(catPosterTexture),
+        uDelay: new THREE.Uniform(0.003),
       },
     },
     {
@@ -86,6 +98,7 @@ const Posters = ({ nodes }: IEmission) => {
       uniforms: {
         ...uniforms,
         uTexture: new THREE.Uniform(flamePosterTexture),
+        uDelay: new THREE.Uniform(0.05),
       },
     },
     {
@@ -94,7 +107,8 @@ const Posters = ({ nodes }: IEmission) => {
       fragmentShader: posterFragment1,
       uniforms: {
         ...uniforms,
-        uTexture: new THREE.Uniform(italyPosterTexture),
+        uTexture: new THREE.Uniform(patronusPosterTexture),
+        uDelay: new THREE.Uniform(0.06),
       },
     },
     {
@@ -104,16 +118,18 @@ const Posters = ({ nodes }: IEmission) => {
       uniforms: {
         ...uniforms,
         uTexture: new THREE.Uniform(ancientCyborgPosterTexture),
+        uDelay: new THREE.Uniform(0.025),
       },
     },
     {
       id: 9,
-      vertexShader: posterVertex1,
-      fragmentShader: posterFragment1,
-      uniforms: {
-        ...uniforms,
-        uTexture: new THREE.Uniform(cosmosPosterTexture),
-      },
+      vertexShader: gamingPosterVertexShader2,
+      fragmentShader: gamingPosterFragmentShader2,
+      // uniforms: {
+      //   ...uniforms,
+      //   uTexture: new THREE.Uniform(cosmosPosterTexture),
+      //   uDelay: new THREE.Uniform(0.033),
+      // },
     },
     {
       id: 10,
@@ -122,6 +138,7 @@ const Posters = ({ nodes }: IEmission) => {
       uniforms: {
         ...uniforms,
         uTexture: new THREE.Uniform(italyPosterTexture),
+        uDelay: new THREE.Uniform(0.04),
       },
     },
   ];
