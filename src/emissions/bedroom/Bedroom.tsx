@@ -11,7 +11,7 @@ const Bedroom = ({ nodes, params }: IEmission) => {
   const numBedroomWalls = 4;
   const bedRoomWallRef = useRef<THREE.ShaderMaterial>(null);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (bedRoomWallRef.current) {
       bedRoomWallRef.current.uniforms.uBedRoom.value.set(params?.bedRoom);
     }
