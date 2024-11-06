@@ -23,8 +23,8 @@ const FlatComponent = () => {
   const params = useControls({
     diningRoom: "#abb4ac",
     corridor: "#ced4da",
-    storeRoom: "#583101",
-    gamingRoom: "#11455f",
+    storeRoom: "#352208",
+    gamingRoom: "#343a40",
     bedRoom: "#d8d8d8",
   });
 
