@@ -12,6 +12,7 @@ import Diningroom from "./emissions/diningroom/Diningroom";
 import Posters from "./emissions/posters/Posters";
 import ComputerDisplays from "./emissions/computerDisplays/ComputerDisplays";
 import Mirror from "./emissions/mirror/Mirror";
+import MoonLight from "./emissions/moonLight/MoonLight";
 
 const FlatComponent = () => {
   const { nodes } = useGLTF("./model/8k/flat.glb");
@@ -27,6 +28,8 @@ const FlatComponent = () => {
     gamingRoom: "#343a40",
     bedRoom: "#d8d8d8",
   });
+
+  console.log(nodes);
 
   return (
     <>
@@ -44,6 +47,7 @@ const FlatComponent = () => {
       <Storeroom nodes={nodes} params={params} />
       <ComputerDisplays nodes={nodes} params={params} />
       <Mirror nodes={nodes} />
+      <MoonLight nodes={nodes} />
 
       {/* DUMMY WALLS */}
       <mesh position={[3.288, 2.843, -1.77]} scale={[0.17, 0.185, 4.26]}>
