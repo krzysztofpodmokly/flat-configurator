@@ -11,7 +11,7 @@ import Gamingroom from "./emissions/gamingroom/Gamingroom";
 import Diningroom from "./emissions/diningroom/Diningroom";
 import Posters from "./emissions/posters/Posters";
 import ComputerDisplays from "./emissions/computerDisplays/ComputerDisplays";
-// import { TUniform } from "./interfaces";
+import Mirror from "./emissions/mirror/Mirror";
 
 const FlatComponent = () => {
   const { nodes } = useGLTF("./model/8k/flat.glb");
@@ -28,8 +28,6 @@ const FlatComponent = () => {
     bedRoom: "#d8d8d8",
   });
 
-  console.log(nodes);
-
   return (
     <>
       <OrbitControls makeDefault />
@@ -45,6 +43,7 @@ const FlatComponent = () => {
       <Gamingroom nodes={nodes} params={params} />
       <Storeroom nodes={nodes} params={params} />
       <ComputerDisplays nodes={nodes} params={params} />
+      <Mirror nodes={nodes} />
 
       {/* DUMMY WALLS */}
       <mesh position={[3.288, 2.843, -1.77]} scale={[0.17, 0.185, 4.26]}>

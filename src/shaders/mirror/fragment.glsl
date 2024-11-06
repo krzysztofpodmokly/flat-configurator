@@ -1,12 +1,14 @@
 uniform float uTime;
+uniform vec3 uColorA;
+uniform vec3 uColorB;
 
 varying vec2 vUv;
 
 #include ../includes/perlinNoise.glsl
 
 void main() {
-  vec3 uColorStart = vec3(0.1, 0.3, 1.0);
-  vec3 uColorEnd = vec3(0.9, 1.0, 0.1);
+  // vec3 uColorStart = vec3(.903, 0.840, 0.813);
+  // vec3 uColorEnd = vec3(0.0, 0.48, 0.73);
 
   vec2 displacedUv = vUv + cnoise(vec3(vUv * 5.0, uTime * 0.1));
 
@@ -21,7 +23,7 @@ void main() {
   // Clamp value
   // strength = clamp(strength, 0.0, 1.0);
 
-  vec3 color = mix(uColorStart, uColorEnd, strength);
+  vec3 color = mix(uColorA, uColorB, strength);
 
   gl_FragColor = vec4(color, 1.0);
 

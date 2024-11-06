@@ -10,8 +10,8 @@ void main() {
   uv = vec2(1.0 - vUv.y, vUv.x);
 
   if (uHorizontal) {
-    uv.x += uTime * 0.25;
-    // uv.x = 1.0 - uv.y;
+    uv.x += uTime * 0.15;
+    uv.y = 0.48 - uv.y; 
   } else {
     // rotate uvs by 90deg
     uv = vec2(vUv.y, 1.0 - vUv.x);
