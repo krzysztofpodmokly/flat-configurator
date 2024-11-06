@@ -1,12 +1,9 @@
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
-// import { Perf } from "r3f-perf";
-import Experience from "./Experience";
 
 import "./index.css";
 import { Environment } from "@react-three/drei";
 import FlatComponent from "./FlatComponent";
-// import { Environment, Stage } from "@react-three/drei";
 
 function App() {
   return (
@@ -25,9 +22,7 @@ function App() {
         antialias: true,
       }}
     >
-      {/* <Perf /> */}
       <Environment background preset="sunset" backgroundBlurriness={0.5} />
-      {/* <Experience /> */}
       <FlatComponent />
     </Canvas>
   );
