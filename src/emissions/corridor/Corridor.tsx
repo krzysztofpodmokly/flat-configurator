@@ -11,9 +11,7 @@ const Corridor = ({ nodes, params }: IEmission) => {
   const numCorridorWalls = 9;
   const corridorWallRef = useRef<THREE.ShaderMaterial>(null);
 
-  useFrame((state) => {
-    // const elapsedTime = state.clock.getElapsedTime();
-
+  useFrame(() => {
     if (corridorWallRef.current) {
       corridorWallRef.current.uniforms.uCorridor.value.set(params?.corridor);
     }

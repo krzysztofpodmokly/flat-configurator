@@ -4,8 +4,6 @@ import { useMemo, useRef } from "react";
 import { useTexture } from "@react-three/drei";
 
 import { generateArray } from "../../utils";
-import gamingPosterFragmentShader1 from "../../shaders/posters/poster1/fragment.glsl";
-import gamingPosterVertexShader1 from "../../shaders/posters/poster1/vertex.glsl";
 import gamingPosterFragmentShader2 from "../../shaders/posters/poster2/fragment.glsl";
 import gamingPosterVertexShader2 from "../../shaders/posters/poster2/vertex.glsl";
 import gamingPosterFragmentShader3 from "../../shaders/posters/poster3/fragment.glsl";

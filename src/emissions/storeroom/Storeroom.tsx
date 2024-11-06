@@ -11,9 +11,7 @@ const Storeroom = ({ nodes, params }: IEmission) => {
   const numStoreRoomWalls = 4;
   const storeRoomWallRef = useRef<THREE.ShaderMaterial>(null);
 
-  useFrame((state) => {
-    // const elapsedTime = state.clock.getElapsedTime();
-
+  useFrame(() => {
     if (storeRoomWallRef.current) {
       storeRoomWallRef.current.uniforms.uStoreRoom.value.set(params?.storeRoom);
     }

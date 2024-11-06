@@ -11,9 +11,7 @@ const Diningroom = ({ nodes, params }: IEmission) => {
   const numDiningRoomWalls = 3;
   const diningRoomWallRef = useRef<THREE.ShaderMaterial>(null);
 
-  useFrame((state) => {
-    // const elapsedTime = state.clock.getElapsedTime();
-
+  useFrame(() => {
     if (diningRoomWallRef.current) {
       diningRoomWallRef.current.uniforms.uDiningRoom.value.set(
         params?.diningRoom

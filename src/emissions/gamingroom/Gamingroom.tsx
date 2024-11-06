@@ -11,9 +11,7 @@ const Gamingroom = ({ nodes, params }: IEmission) => {
   const numGamingRoomWalls = 4;
   const gamingRoomWallRef = useRef<THREE.ShaderMaterial>(null);
 
-  useFrame((state) => {
-    // const elapsedTime = state.clock.getElapsedTime();
-
+  useFrame(() => {
     if (gamingRoomWallRef.current) {
       gamingRoomWallRef.current.uniforms.uGamingRoom.value.set(
         params?.gamingRoom
