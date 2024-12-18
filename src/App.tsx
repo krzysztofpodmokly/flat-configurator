@@ -2,8 +2,10 @@ import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
 import "./index.css";
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import FlatComponent from "./FlatComponent";
+import DiningRoom from "./components/DiningRoom";
+import PostProcessingEffects from "./postprocessing/PostProcessingEffects";
 
 function App() {
   return (
@@ -22,8 +24,20 @@ function App() {
         antialias: true,
       }}
     >
+      <OrbitControls
+        target={[0, 0, 0]}
+        dampingFactor={0.1}
+        zoomSpeed={0.5}
+        minPolarAngle={0}
+        maxPolarAngle={Math.PI / 2.3}
+        maxDistance={20}
+        minDistance={10}
+        screenSpacePanning={false}
+      />
       <Environment background preset="sunset" backgroundBlurriness={0.5} />
-      <FlatComponent />
+      <PostProcessingEffects />
+      {/* <FlatComponent /> */}
+      <DiningRoom />
     </Canvas>
   );
 }

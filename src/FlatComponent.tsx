@@ -15,8 +15,13 @@ import Mirror from "./emissions/mirror/Mirror";
 import MoonLight from "./emissions/moonLight/MoonLight";
 
 const FlatComponent = () => {
-  const { nodes } = useGLTF("./model/8k/flat.glb");
-  const bakedTexture = useTexture("./model/8k/baked.jpg");
+  const { nodes } = useGLTF("./model/global/flat.glb");
+  const bakedTexture = useTexture("./model/global/baked.jpg");
+
+  // const diningRoomModel = useGLTF("./model/dining-room.glb");
+  // const diningRoomBakedTexture = useTexture("./model/dining-room.jpg");
+
+  // console.log(diningRoomModel);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -29,11 +34,9 @@ const FlatComponent = () => {
     bedRoom: "#d8d8d8",
   });
 
-  console.log(nodes);
-
   return (
     <>
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
       <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
