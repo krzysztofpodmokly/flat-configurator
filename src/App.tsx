@@ -4,7 +4,7 @@ import * as THREE from "three";
 import "./index.css";
 import { Environment, OrbitControls } from "@react-three/drei";
 import FlatComponent from "./FlatComponent";
-import DiningRoom from "./components/DiningRoom";
+import DiningRoom from "./components/diningRoom/DiningRoom";
 import PostProcessingEffects from "./postprocessing/PostProcessingEffects";
 
 function App() {
