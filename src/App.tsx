@@ -6,6 +6,7 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import FlatComponent from "./FlatComponent";
 import DiningRoom from "./components/diningRoom/DiningRoom";
 import PostProcessingEffects from "./postprocessing/PostProcessingEffects";
+import BathRoom from "./components/bathRoom/BathRoom";
 
 function App() {
   return (
@@ -35,9 +36,10 @@ function App() {
         screenSpacePanning={false}
       />
       <Environment background preset="sunset" backgroundBlurriness={0.5} />
-      <PostProcessingEffects />
-      {/* <FlatComponent /> */}
-      <DiningRoom />
+      {/* <PostProcessingEffects /> */}
+      <FlatComponent />
+      {/* <BathRoom /> */}
+      {/* <DiningRoom /> */}
     </Canvas>
   );
 }

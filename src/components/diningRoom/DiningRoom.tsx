@@ -6,8 +6,10 @@ import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 
 const DiningRoom = () => {
-  const { nodes } = useGLTF("./model/diningRoom/dining-room.glb");
-  const bakedTexture = useTexture("./model/diningRoom/baked-8k.jpg");
+  const { nodes } = useGLTF("./models/diningRoom/dining-room-compressed.glb");
+  const bakedTexture = useTexture(
+    "./models/diningRoom/dining-room-texture.jpg"
+  );
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;

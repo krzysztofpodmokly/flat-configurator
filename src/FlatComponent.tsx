@@ -15,8 +15,8 @@ import Mirror from "./emissions/mirror/Mirror";
 import MoonLight from "./emissions/moonLight/MoonLight";
 
 const FlatComponent = () => {
-  const { nodes } = useGLTF("./model/global/flat.glb");
-  const bakedTexture = useTexture("./model/global/baked.jpg");
+  const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
+  const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");
 
   // const diningRoomModel = useGLTF("./model/dining-room.glb");
   // const diningRoomBakedTexture = useTexture("./model/dining-room.jpg");
