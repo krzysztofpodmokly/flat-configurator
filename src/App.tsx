@@ -7,6 +7,8 @@ import FlatComponent from "./FlatComponent";
 import DiningRoom from "./components/diningRoom/DiningRoom";
 import PostProcessingEffects from "./postprocessing/PostProcessingEffects";
 import BathRoom from "./components/bathRoom/BathRoom";
+import GamingRoom from "./components/gamingRoom/GamingRoom";
+import BedRoom from "./components/bedRoom/BedRoom";
 
 function App() {
   return (
@@ -37,9 +39,11 @@ function App() {
       />
       <Environment background preset="sunset" backgroundBlurriness={0.5} />
       {/* <PostProcessingEffects /> */}
-      <FlatComponent />
+      {/* <FlatComponent /> */}
       {/* <BathRoom /> */}
       {/* <DiningRoom /> */}
+      <GamingRoom />
+      {/* <BedRoom /> */}
     </Canvas>
   );
 }
