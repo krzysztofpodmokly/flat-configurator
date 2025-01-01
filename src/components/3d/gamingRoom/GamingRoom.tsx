@@ -13,9 +13,9 @@ const GamingRoom = ({ positionY }: IModelProps) => {
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
+  console.log(positionY);
   return (
     <group position={[-12, positionY, 3]} rotation={[0, 5, 0]}>
-      <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

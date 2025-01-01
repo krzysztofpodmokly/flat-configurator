@@ -27,8 +27,8 @@ function App() {
         }}
         shadows
         gl={{
-          toneMapping: THREE.ACESFilmicToneMapping,
           antialias: true,
+          alpha: false,
         }}
       >
         <Suspense fallback={null}>

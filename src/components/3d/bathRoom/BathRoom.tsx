@@ -26,7 +26,6 @@ const BathRoom = ({ positionY }: IModelProps) => {
 
   return (
     <group position={[-10, positionY, 7]} rotation={[0, 2.1, 0]}>
-      <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

@@ -32,7 +32,6 @@ const AllRooms = ({ positionY }: { positionY: number }) => {
 
   return (
     <group position={[-3, positionY, 4]} rotation={[0, 0, 0]}>
-      <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

@@ -1,5 +1,5 @@
-import { View } from "@react-three/drei";
 import { useSnapScroll } from "../../hooks/useSnapScroll";
+import CameraRig from "../cameraRig/CameraRig";
 import FloatingModel from "../shared/FloatingModel";
 
 type Props = {};
@@ -9,11 +9,13 @@ function Experience({}: Props) {
 
   return (
     <>
-      <FloatingModel model="all-rooms" positionY={position} />
-      <FloatingModel model="dining-room" positionY={position - 4} />
-      <FloatingModel model="bath-room" positionY={position - 8} />
-      <FloatingModel model="gaming-room" positionY={position - 12} />
-      <FloatingModel model="bed-room" positionY={position - 16} />
+      <CameraRig>
+        <FloatingModel model="all-rooms" positionY={position} />
+        <FloatingModel model="dining-room" positionY={position - 8} />
+        <FloatingModel model="bath-room" positionY={position - 16} />
+        <FloatingModel model="gaming-room" positionY={position - 24} />
+        <FloatingModel model="bed-room" positionY={position - 32} />
+      </CameraRig>
     </>
   );
 }

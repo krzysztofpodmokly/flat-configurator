@@ -16,7 +16,6 @@ const DiningRoom = ({ positionY }: IModelProps) => {
 
   return (
     <group position={[-10, positionY, 4]} rotation={[0, 3, 0]}>
-      <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
