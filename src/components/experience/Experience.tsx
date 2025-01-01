@@ -1,3 +1,4 @@
+import { View } from "@react-three/drei";
 import { useSnapScroll } from "../../hooks/useSnapScroll";
 import FloatingModel from "../shared/FloatingModel";
 

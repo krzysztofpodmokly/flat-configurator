@@ -2,16 +2,20 @@ import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
 import "./index.css";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, View } from "@react-three/drei";
 
 import PostProcessingEffects from "./postprocessing/PostProcessingEffects";
 
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import Experience from "./components/experience/Experience";
+import FloatingModel from "./components/shared/FloatingModel";
 
 function App() {
   return (
     <>
+      {/* <View>
+        <FloatingModel model="all-rooms" positionY={0} />
+      </View> */}
       <Canvas
         // flat
         className="webgl"
@@ -27,7 +31,8 @@ function App() {
           antialias: true,
         }}
       >
-        {/* <OrbitControls
+        <Suspense fallback={null}>
+          {/* <OrbitControls
           target={[0, 0, 0]}
           dampingFactor={0.1}
           zoomSpeed={0.5}
@@ -37,9 +42,10 @@ function App() {
           minDistance={10}
           screenSpacePanning={false}
         /> */}
-        <Environment background preset="sunset" backgroundBlurriness={0.5} />
-        <Experience />
-        {/* <PostProcessingEffects /> */}
+          <Environment background preset="sunset" backgroundBlurriness={0.5} />
+          <Experience />
+          {/* <PostProcessingEffects /> */}
+        </Suspense>
       </Canvas>
     </>
   );
