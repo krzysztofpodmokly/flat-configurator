@@ -4,20 +4,20 @@ import * as THREE from "three";
 
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
+import { useStore } from "../../store/store";
 
 const DiningRoom = () => {
   const { nodes } = useGLTF("./models/diningRoom/dining-room-compressed.glb");
   const bakedTexture = useTexture(
     "./models/diningRoom/dining-room-texture.jpg"
   );
+  const position = useStore((state) => state.position);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
-  console.log(nodes);
-
   return (
-    <>
+    <group position={[-10, position - 4, 4]} rotation={[0, 3, 0]}>
       <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
@@ -94,7 +94,7 @@ const DiningRoom = () => {
           fragmentShader={fragmentShader}
         />
       </mesh>
-    </>
+    </group>
   );
 };
 

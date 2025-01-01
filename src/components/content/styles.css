@@ -1,0 +1,42 @@
+.main {
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#block {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  background: red;
+}
+
+.n {
+  position: absolute;
+  height: 10px;
+  background: #000;
+  width: 200px;
+}
+
+.n1 {
+  top: 100px;
+}
+
+.n2 {
+  top: 200px;
+}
+
+.n3 {
+  top: 300px;
+}
+
+.n4 {
+  top: 400px;
+}
+
+.n5 {
+  top: 500px;
+}
