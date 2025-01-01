@@ -4,14 +4,14 @@ import * as THREE from "three";
 
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
-import { useStore } from "../../store/store";
+import { useStore } from "../../../store/store";
 
 const DiningRoom = () => {
   const { nodes } = useGLTF("./models/diningRoom/dining-room-compressed.glb");
   const bakedTexture = useTexture(
     "./models/diningRoom/dining-room-texture.jpg"
   );
-  const position = useStore((state) => state.position);
+  const { position } = useStore((state) => state);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;

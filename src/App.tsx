@@ -3,7 +3,7 @@ import * as THREE from "three";
 
 import "./index.css";
 import { Environment, OrbitControls } from "@react-three/drei";
-import FlatComponent from "./components/allRooms/AllRooms";
+import FlatComponent from "./components/3d/allRooms/AllRooms";
 import DiningRoom from "./components/diningRoom/DiningRoom";
 import PostProcessingEffects from "./postprocessing/PostProcessingEffects";
 import BathRoom from "./components/bathRoom/BathRoom";

@@ -1,29 +1,15 @@
-import { useFrame, useThree } from "@react-three/fiber";
-import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-import GamingRoom from "../gamingRoom/GamingRoom";
-import AllRooms from "../allRooms/AllRooms";
-
-import { useStore } from "../../store/store";
-import * as THREE from "three";
-import BathRoom from "../bathRoom/BathRoom";
-import DiningRoom from "../diningRoom/DiningRoom";
-import BedRoom from "../bedRoom/BedRoom";
-
-gsap.registerPlugin(useGSAP);
+import FloatingModel from "../shared/FloatingModel";
 
 type Props = {};
 
 function Experience({}: Props) {
   return (
     <>
-      <AllRooms />
-      <DiningRoom />
-      <BathRoom />
-      <GamingRoom />
-      <BedRoom />
+      <FloatingModel model="all-rooms" />
+      <FloatingModel model="dining-room" />
+      <FloatingModel model="bath-room" />
+      <FloatingModel model="gaming-room" />
+      <FloatingModel model="bed-room" />
     </>
   );
 }

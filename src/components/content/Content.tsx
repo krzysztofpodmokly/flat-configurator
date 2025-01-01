@@ -46,14 +46,9 @@ const Content = forwardRef<Props>((props, ref) => {
       setRounded(Math.round(wheelPosition));
       const diff = rounded - wheelPosition;
 
-      // if (!blockRef.current) return;
-      // blockRef.current.style.transform = `translate(0, ${
-      //   wheelPosition * 100 + 50
-      // }px)`;
-
       if (!wrapRef.current) return;
       wrapRef.current.style.transform = `translate(0, ${
-        -wheelPosition * 100 + 50
+        -wheelPosition * 200 + 50
       }px)`;
 
       setWheelPosition((prevPosition) => {
@@ -69,7 +64,8 @@ const Content = forwardRef<Props>((props, ref) => {
         o.dist = 1 - o.dist ** 2;
 
         if (!stickRefs.current[i]) return;
-        stickRefs.current[i].style.transform = `scale(${1 + 0.1 * o.dist})`;
+        const scale = 1 + 0.3 * o.dist;
+        stickRefs.current[i].style.transform = `scale(${scale})`;
       });
 
       animationId = window.requestAnimationFrame(raf);
@@ -86,7 +82,6 @@ const Content = forwardRef<Props>((props, ref) => {
 
   return (
     <main className="main">
-      <div id="block" ref={blockRef}></div>
       <div className="wrap" ref={wrapRef}>
         {Array.from({ length: 5 }).map((_, index) => (
           <div

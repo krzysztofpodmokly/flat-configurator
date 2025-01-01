@@ -1,29 +1,24 @@
-import { OrbitControls, useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { useControls } from "leva";
 
-import dummyFragmentShader from "../../shaders/dummy/fragment.glsl";
-import dummyVertexShader from "../../shaders/dummy/vertex.glsl";
-import Storeroom from "../../emissions/storeroom/Storeroom";
-import Corridor from "../../emissions/corridor/Corridor";
-import Bedroom from "../../emissions/bedroom/Bedroom";
-import Gamingroom from "../../emissions/gamingroom/Gamingroom";
-import Diningroom from "../../emissions/diningroom/Diningroom";
-import Posters from "../../emissions/posters/Posters";
-import ComputerDisplays from "../../emissions/computerDisplays/ComputerDisplays";
-import Mirror from "../../emissions/mirror/Mirror";
-import MoonLight from "../../emissions/moonLight/MoonLight";
-import { useStore } from "../../store/store";
+import dummyFragmentShader from "../../../shaders/dummy/fragment.glsl";
+import dummyVertexShader from "../../../shaders/dummy/vertex.glsl";
+import Storeroom from "../../../emissions/storeroom/Storeroom";
+import Corridor from "../../../emissions/corridor/Corridor";
+import Bedroom from "../../../emissions/bedroom/Bedroom";
+import Gamingroom from "../../../emissions/gamingroom/Gamingroom";
+import Diningroom from "../../../emissions/diningroom/Diningroom";
+import Posters from "../../../emissions/posters/Posters";
+import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDisplays";
+import Mirror from "../../../emissions/mirror/Mirror";
+import MoonLight from "../../../emissions/moonLight/MoonLight";
+import { useStore } from "../../../store/store";
 
 const FlatComponent = () => {
   const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
   const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");
-  const position = useStore((state) => state.position);
-
-  // const diningRoomModel = useGLTF("./model/dining-room.glb");
-  // const diningRoomBakedTexture = useTexture("./model/dining-room.jpg");
-
-  // console.log(diningRoomModel);
+  const { position } = useStore((state) => state);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -38,7 +33,6 @@ const FlatComponent = () => {
 
   return (
     <group position={[-3, position, 4]} rotation={[0, 0, 0]}>
-      {/* <OrbitControls makeDefault /> */}
       <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />

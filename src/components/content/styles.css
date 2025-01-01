@@ -7,13 +7,6 @@
   height: 100%;
 }
 
-#block {
-  height: 100px;
-  width: 100px;
-  position: absolute;
-  background: red;
-}
-
 .n {
   position: absolute;
   height: 10px;
@@ -22,21 +15,21 @@
 }
 
 .n1 {
-  top: 100px;
-}
-
-.n2 {
-  top: 200px;
-}
-
-.n3 {
-  top: 300px;
-}
-
-.n4 {
   top: 400px;
 }
 
+.n2 {
+  top: 600px;
+}
+
+.n3 {
+  top: 800px;
+}
+
+.n4 {
+  top: 1000px;
+}
+
 .n5 {
-  top: 500px;
+  top: 1200px;
 }

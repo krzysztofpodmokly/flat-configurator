@@ -1,19 +1,17 @@
-import { OrbitControls, useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-// import { useControls } from "leva";
 
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
-import mirrorVertexShader from "../../shaders/mirror/vertex.glsl";
-import mirrorFragmentShader from "../../shaders/mirror/fragment.glsl";
+import mirrorVertexShader from "../../../shaders/mirror/vertex.glsl";
+import mirrorFragmentShader from "../../../shaders/mirror/fragment.glsl";
 import { useMemo } from "react";
-import { useStore } from "../../store/store";
+import { useStore } from "../../../store/store";
 
 const BathRoom = () => {
   const { nodes } = useGLTF("./models/bathroom/bathroom-compressed.glb");
   const bakedTexture = useTexture("./models/bathroom/bathroom-texture.jpg");
-
-  const position = useStore((state) => state.position);
+  const { position } = useStore((state) => state);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -28,7 +26,7 @@ const BathRoom = () => {
   );
 
   return (
-    <group position={[-13, position - 8, 9]} rotation={[0, 2.1, 0]}>
+    <group position={[-10, position - 8, 7]} rotation={[0, 2.1, 0]}>
       <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
