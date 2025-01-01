@@ -12,3 +12,7 @@ export interface IEmission {
   nodes: Record<string, THREE.Object3D>;
   params?: Record<string, string>;
 }
+
+export interface IModelProps {
+  positionY: number;
+}

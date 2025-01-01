@@ -3,19 +3,18 @@ import * as THREE from "three";
 
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
-import { useStore } from "../../../store/store";
+import { IModelProps } from "../../../interfaces";
 
-const GamingRoom = () => {
+const GamingRoom = ({ positionY }: IModelProps) => {
   const { nodes } = useGLTF("./models/gamingRoom/gaming-room.glb");
   const bakedTexture = useTexture(
     "./models/gamingRoom/gaming-baked-texture.jpg"
   );
-  const { position } = useStore((state) => state);
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   return (
-    <group position={[-12, position - 12, 3]} rotation={[0, 5, 0]}>
+    <group position={[-12, positionY, 3]} rotation={[0, 5, 0]}>
       <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />

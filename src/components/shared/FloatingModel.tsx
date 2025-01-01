@@ -11,14 +11,19 @@ type FloatingModelProps = {
   floatingRange?: [number, number];
   floatIntensity?: number;
   rotationIntensity?: number;
+  positionY: number;
+};
+
+type ModelProps = {
+  positionY: number;
 };
 
 const modelsMap = {
-  "all-rooms": <AllRooms />,
-  "dining-room": <DiningRoom />,
-  "bath-room": <BathRoom />,
-  "gaming-room": <GamingRoom />,
-  "bed-room": <BedRoom />,
+  "all-rooms": (props: ModelProps) => <AllRooms {...props} />,
+  "dining-room": (props: ModelProps) => <DiningRoom {...props} />,
+  "bath-room": (props: ModelProps) => <BathRoom {...props} />,
+  "gaming-room": (props: ModelProps) => <GamingRoom {...props} />,
+  "bed-room": (props: ModelProps) => <BedRoom {...props} />,
 };
 
 function FloatingModel({
@@ -27,7 +32,11 @@ function FloatingModel({
   rotationIntensity = 0.3,
   floatIntensity = 0.1,
   floatingRange = [-0.01, 0.01],
+  positionY = 0,
 }: FloatingModelProps) {
+  // const ModelComponent = modelsMap[model];
+  // if (!ModelComponent) return null;
+
   return (
     <Float
       speed={floatSpeed}
@@ -35,7 +44,7 @@ function FloatingModel({
       floatIntensity={floatIntensity}
       rotationIntensity={rotationIntensity}
     >
-      {modelsMap[model]}
+      {modelsMap[model]({ positionY })}
     </Float>
   );
 }

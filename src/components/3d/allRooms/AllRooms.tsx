@@ -13,12 +13,11 @@ import Posters from "../../../emissions/posters/Posters";
 import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDisplays";
 import Mirror from "../../../emissions/mirror/Mirror";
 import MoonLight from "../../../emissions/moonLight/MoonLight";
-import { useStore } from "../../../store/store";
 
-const FlatComponent = () => {
+const AllRooms = ({ positionY }: { positionY: number }) => {
   const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
   const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");
-  const { position } = useStore((state) => state);
+  // const { position } = useStore((state) => state);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -32,7 +31,7 @@ const FlatComponent = () => {
   });
 
   return (
-    <group position={[-3, position, 4]} rotation={[0, 0, 0]}>
+    <group position={[-3, positionY, 4]} rotation={[0, 0, 0]}>
       <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
@@ -69,4 +68,4 @@ const FlatComponent = () => {
   );
 };
 
-export default FlatComponent;
+export default AllRooms;

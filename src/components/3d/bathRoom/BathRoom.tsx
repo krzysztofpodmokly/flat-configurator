@@ -6,12 +6,11 @@ import fragmentShader from "./shaders/fragment.glsl";
 import mirrorVertexShader from "../../../shaders/mirror/vertex.glsl";
 import mirrorFragmentShader from "../../../shaders/mirror/fragment.glsl";
 import { useMemo } from "react";
-import { useStore } from "../../../store/store";
+import { IModelProps } from "../../../interfaces";
 
-const BathRoom = () => {
+const BathRoom = ({ positionY }: IModelProps) => {
   const { nodes } = useGLTF("./models/bathroom/bathroom-compressed.glb");
   const bakedTexture = useTexture("./models/bathroom/bathroom-texture.jpg");
-  const { position } = useStore((state) => state);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -26,7 +25,7 @@ const BathRoom = () => {
   );
 
   return (
-    <group position={[-10, position - 8, 7]} rotation={[0, 2.1, 0]}>
+    <group position={[-10, positionY, 7]} rotation={[0, 2.1, 0]}>
       <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />

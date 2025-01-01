@@ -1,21 +1,20 @@
-import { OrbitControls, useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 // import { useControls } from "leva";
 
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
-import { useStore } from "../../../store/store";
+import { IModelProps } from "../../../interfaces";
 
-const BedRoom = () => {
+const BedRoom = ({ positionY }: IModelProps) => {
   const { nodes } = useGLTF("./models/bedRoom/bedroom.glb");
   const bakedTexture = useTexture("./models/bedRoom/bedroom-baked-texture.jpg");
-  const { position } = useStore((state) => state);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   return (
-    <group position={[-12, position - 16, 6]} rotation={[0, 5, 0]}>
+    <group position={[-12, positionY, 6]} rotation={[0, 5, 0]}>
       <color args={["#201919"]} attach="background" />
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
