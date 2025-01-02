@@ -8,7 +8,7 @@ import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDispla
 import gamingPosterVertexShader2 from "../../../shaders/posters/poster2/vertex.glsl";
 import gamingPosterFragmentShader2 from "../../../shaders/posters/poster2/fragment.glsl";
 
-const BedRoom = ({ uWallColor }: { uWallColor: string }) => {
+const BedRoom = ({ uWallColor }: { uWallColor?: string }) => {
   const { nodes } = useGLTF("./models/bedRoom/bedroom.glb");
   const bakedTexture = useTexture("./models/bedRoom/bedroom-baked-texture.jpg");
 

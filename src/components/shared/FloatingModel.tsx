@@ -11,13 +11,11 @@ type FloatingModelProps = {
   floatingRange?: [number, number];
   floatIntensity?: number;
   rotationIntensity?: number;
-  // positionY: number;
-  uWallColor: string;
+  uWallColor?: string;
 };
 
 type ModelProps = {
-  // positionY: number;
-  uWallColor: string;
+  uWallColor?: string;
 };
 
 const modelsMap = {
@@ -34,12 +32,8 @@ function FloatingModel({
   rotationIntensity = 0.3,
   floatIntensity = 0.1,
   floatingRange = [-0.01, 0.01],
-  // positionY = 0,
   uWallColor,
 }: FloatingModelProps) {
-  // const ModelComponent = modelsMap[model];
-  // if (!ModelComponent) return null;
-
   return (
     <Float
       speed={floatSpeed}

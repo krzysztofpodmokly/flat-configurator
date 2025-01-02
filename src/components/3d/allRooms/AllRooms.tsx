@@ -16,10 +16,9 @@ import BedroomWalls from "./BedroomWalls";
 import GamingWalls from "./GamingWalls";
 import StoreroomWalls from "./StoreroomWalls";
 
-const AllRooms = ({ uWallColor }: { uWallColor: string }) => {
+const AllRooms = ({ uWallColor }: { uWallColor?: string }) => {
   const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
   const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");
-  // const { position } = useStore((state) => state);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
