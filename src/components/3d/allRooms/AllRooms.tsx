@@ -4,15 +4,17 @@ import { useControls } from "leva";
 
 import dummyFragmentShader from "../../../shaders/dummy/fragment.glsl";
 import dummyVertexShader from "../../../shaders/dummy/vertex.glsl";
-import Storeroom from "../../../emissions/storeroom/Storeroom";
-import Corridor from "../../../emissions/corridor/Corridor";
-import Bedroom from "../../../emissions/bedroom/Bedroom";
-import Gamingroom from "../../../emissions/gamingroom/Gamingroom";
-import Diningroom from "../../../emissions/diningroom/Diningroom";
-import Posters from "../../../emissions/posters/Posters";
+
 import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDisplays";
 import Mirror from "../../../emissions/mirror/Mirror";
 import MoonLight from "../../../emissions/moonLight/MoonLight";
+
+import Posters from "./Posters";
+import DiningWalls from "./DiningWalls";
+import CorridorWalls from "./CorridorWalls";
+import BedroomWalls from "./BedroomWalls";
+import GamingWalls from "./GamingWalls";
+import StoreroomWalls from "./StoreroomWalls";
 
 const AllRooms = ({ positionY }: { positionY: number }) => {
   const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
@@ -36,12 +38,13 @@ const AllRooms = ({ positionY }: { positionY: number }) => {
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
-      <Posters nodes={nodes} params={params} />
-      <Diningroom nodes={nodes} params={params} />
-      <Corridor nodes={nodes} params={params} />
-      <Bedroom nodes={nodes} params={params} />
-      <Gamingroom nodes={nodes} params={params} />
-      <Storeroom nodes={nodes} params={params} />
+      <Posters nodes={nodes} />
+      <DiningWalls nodes={nodes} uWallColor={params.diningRoom} />
+      <CorridorWalls nodes={nodes} uWallColor={params.corridor} />
+      <BedroomWalls nodes={nodes} uWallColor={params.bedRoom} />
+      <GamingWalls nodes={nodes} uWallColor={params.gamingRoom} />
+      <StoreroomWalls nodes={nodes} uWallColor={params.storeRoom} />
+
       <ComputerDisplays nodes={nodes} params={params} />
       <Mirror nodes={nodes} />
       <MoonLight nodes={nodes} />

@@ -10,11 +10,11 @@ function Experience({}: Props) {
   return (
     <>
       {/* <CameraRig> */}
-      {/* <FloatingModel model="all-rooms" positionY={position} /> */}
-      <FloatingModel model="dining-room" positionY={position} />
-      {/* <FloatingModel model="bath-room" positionY={position - 16} /> */}
-      {/* <FloatingModel model="gaming-room" positionY={position - 24} /> */}
-      {/* <FloatingModel model="bed-room" positionY={position - 32} /> */}
+      <FloatingModel model="all-rooms" positionY={0} />
+      {/* <FloatingModel model="dining-room" positionY={0} /> */}
+      {/* <FloatingModel model="bath-room" positionY={0} /> */}
+      {/* <FloatingModel model="gaming-room" positionY={0} /> */}
+      {/* <FloatingModel model="bed-room" positionY={0} /> */}
       {/* </CameraRig> */}
     </>
   );

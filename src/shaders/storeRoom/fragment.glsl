@@ -1,11 +1,11 @@
 varying vec2 vUv;
 
-uniform vec3 uStoreRoom;
+uniform vec3 uWall;
 
 void main() {
   float strength = smoothstep(0.0, 0.05, vUv.x);
 
-  vec3 finalColor = mix(uStoreRoom * 0.8, uStoreRoom, strength);  
+  vec3 finalColor = mix(uWall * 0.8, uWall, strength);  
 
   gl_FragColor = vec4(finalColor, 1.0);
 

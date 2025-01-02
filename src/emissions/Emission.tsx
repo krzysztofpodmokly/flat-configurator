@@ -8,20 +8,34 @@ import defaultPosterVertexShader from "../shaders/default/vertex.glsl";
 
 interface IEmission {
   node: THREE.Mesh;
-  image: string;
+  image?: string;
   fragmentShader?: string;
   vertexShader?: string;
+  params?: Record<string, string>;
+  roomType?: string;
+  uWallColor?: string;
 }
 
-const Emission = ({ node, image, fragmentShader, vertexShader }: IEmission) => {
-  const posterRef = useRef<THREE.ShaderMaterial>(null);
-  const texture = useTexture(image);
+const Emission = ({
+  node,
+  image,
+  fragmentShader,
+  vertexShader,
+  // params,
+  // roomType,
+  uWallColor,
+}: IEmission) => {
+  const ref = useRef<THREE.ShaderMaterial>(null);
+  const texture = image ? useTexture(image) : null;
 
   useFrame((state) => {
     const elapsedTime = state.clock.getElapsedTime();
 
-    if (posterRef.current) {
-      posterRef.current.uniforms.uTime.value = elapsedTime;
+    if (ref.current) {
+      ref.current.uniforms.uTime.value = elapsedTime;
+      if (uWallColor) {
+        ref.current.uniforms.uWall.value.set(uWallColor);
+      }
     }
   });
 
@@ -31,9 +45,10 @@ const Emission = ({ node, image, fragmentShader, vertexShader }: IEmission) => {
       uResolution: new THREE.Uniform(
         new THREE.Vector2(window.innerWidth, window.innerHeight)
       ),
-      uTexture: new THREE.Uniform(texture),
       uDelay: new THREE.Uniform(0.07),
       uDirection: new THREE.Uniform(true),
+      uTexture: new THREE.Uniform(texture),
+      uWall: new THREE.Uniform(new THREE.Color(uWallColor)),
     }),
     []
   );
@@ -49,7 +64,7 @@ const Emission = ({ node, image, fragmentShader, vertexShader }: IEmission) => {
         fragmentShader={fragmentShader || defaultPosterFramentShader}
         vertexShader={vertexShader || defaultPosterVertexShader}
         uniforms={uniforms}
-        ref={posterRef}
+        ref={ref}
       />
     </mesh>
   );
