@@ -1,12 +1,14 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-// import { useControls } from "leva";
 
-import vertexShader from "./shaders/vertex.glsl";
-import fragmentShader from "./shaders/fragment.glsl";
-import { IModelProps } from "../../../interfaces";
+import fragmentShader from "../../../shaders/bedRoom/fragment.glsl";
+import vertexShader from "../../../shaders/bedRoom/vertex.glsl";
+import Emission from "../../../emissions/Emission";
+import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDisplays";
+import gamingPosterVertexShader2 from "../../../shaders/posters/poster2/vertex.glsl";
+import gamingPosterFragmentShader2 from "../../../shaders/posters/poster2/fragment.glsl";
 
-const BedRoom = ({ positionY }: IModelProps) => {
+const BedRoom = ({ uWallColor }: { uWallColor: string }) => {
   const { nodes } = useGLTF("./models/bedRoom/bedroom.glb");
   const bakedTexture = useTexture("./models/bedRoom/bedroom-baked-texture.jpg");
 
@@ -14,66 +16,53 @@ const BedRoom = ({ positionY }: IModelProps) => {
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   return (
-    <group position={[-12, positionY, 6]} rotation={[0, 5, 0]}>
+    <group position={[-12, 0, 6]} rotation={[0, 5, 0]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
-      <mesh geometry={(nodes["bedroom-wall-1"] as THREE.Mesh).geometry}>
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
+      <Emission
+        node={nodes["bedroom-wall-1"] as THREE.Mesh}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uWallColor={uWallColor}
+      />
+      <Emission
+        node={nodes["bedroom-wall-2"] as THREE.Mesh}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uWallColor={uWallColor}
+      />
+      <Emission
+        node={nodes["bedroom-wall-3"] as THREE.Mesh}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uWallColor={uWallColor}
+      />
+      <Emission
+        node={nodes["bedroom-wall-4"] as THREE.Mesh}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uWallColor={uWallColor}
+      />
+      <Emission
+        node={nodes["bedroom-wall-5"] as THREE.Mesh}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uWallColor={uWallColor}
+      />
 
-      <mesh geometry={(nodes["bedroom-wall-2"] as THREE.Mesh).geometry}>
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
+      <ComputerDisplays nodes={nodes} />
 
-      <mesh geometry={(nodes["bedroom-wall-3"] as THREE.Mesh).geometry}>
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
-
-      <mesh geometry={(nodes["bedroom-wall-4"] as THREE.Mesh).geometry}>
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
-
-      <mesh geometry={(nodes["bedroom-wall-5"] as THREE.Mesh).geometry}>
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
-
-      <mesh geometry={(nodes["computer-display-1"] as THREE.Mesh).geometry}>
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
-
-      <mesh geometry={(nodes["poster-5"] as THREE.Mesh).geometry}>
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
-
-      <mesh geometry={(nodes["poster-9"] as THREE.Mesh).geometry}>
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
+      <Emission
+        node={nodes["poster-5"] as THREE.Mesh}
+        image={"./textures/italy.jpg"}
+      />
+      <Emission
+        node={nodes["poster-9"] as THREE.Mesh}
+        vertexShader={gamingPosterVertexShader2}
+        fragmentShader={gamingPosterFragmentShader2}
+      />
     </group>
   );
 };

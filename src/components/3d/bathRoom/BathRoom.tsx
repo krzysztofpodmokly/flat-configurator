@@ -1,95 +1,55 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-import vertexShader from "./shaders/vertex.glsl";
-import fragmentShader from "./shaders/fragment.glsl";
-import mirrorVertexShader from "../../../shaders/mirror/vertex.glsl";
-import mirrorFragmentShader from "../../../shaders/mirror/fragment.glsl";
-import { useMemo } from "react";
-import { IModelProps } from "../../../interfaces";
+import fragmentShader from "../../../shaders/storeRoom/fragment.glsl";
+import vertexShader from "../../../shaders/storeRoom/vertex.glsl";
 
-const BathRoom = ({ positionY }: IModelProps) => {
+import wallFragmentShader from "./shaders/fragment.glsl";
+import wallVertexShader from "./shaders/vertex.glsl";
+
+import { IModelProps } from "../../../interfaces";
+import Emission from "../../../emissions/Emission";
+import Mirror from "../../../emissions/mirror/Mirror";
+
+const BathRoom = ({ uWallColor }: IModelProps) => {
   const { nodes } = useGLTF("./models/bathroom/bathroom-compressed.glb");
   const bakedTexture = useTexture("./models/bathroom/bathroom-texture.jpg");
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
-  const uniforms = useMemo(
-    () => ({
-      uTime: new THREE.Uniform(0),
-      uColorA: new THREE.Uniform(new THREE.Color("#fdf0d5")),
-      uColorB: new THREE.Uniform(new THREE.Color("#03045e")),
-    }),
-    []
-  );
-
   return (
-    <group position={[-10, positionY, 7]} rotation={[0, 2.1, 0]}>
+    <group position={[-10, 0, 7]} rotation={[0, 2.1, 0]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
-      <mesh
-        geometry={(nodes["storeroom-wall-1"] as THREE.Mesh).geometry}
-        position={nodes["storeroom-wall-1"].position}
-        rotation={nodes["storeroom-wall-1"].rotation}
-        scale={nodes["storeroom-wall-1"].scale}
-      >
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
+      <Emission
+        node={nodes["storeroom-wall-1"] as THREE.Mesh}
+        vertexShader={wallVertexShader}
+        fragmentShader={wallFragmentShader}
+        uWallColor={uWallColor}
+      />
+      <Emission
+        node={nodes["storeroom-wall-2"] as THREE.Mesh}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uWallColor={uWallColor}
+      />
+      <Emission
+        node={nodes["storeroom-wall-3"] as THREE.Mesh}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uWallColor={uWallColor}
+      />
+      <Emission
+        node={nodes["storeroom-wall-4"] as THREE.Mesh}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uWallColor={uWallColor}
+      />
 
-      <mesh
-        geometry={(nodes["storeroom-wall-2"] as THREE.Mesh).geometry}
-        position={nodes["storeroom-wall-2"].position}
-        rotation={nodes["storeroom-wall-2"].rotation}
-        scale={nodes["storeroom-wall-2"].scale}
-      >
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
-
-      <mesh
-        geometry={(nodes["storeroom-wall-3"] as THREE.Mesh).geometry}
-        position={nodes["storeroom-wall-3"].position}
-        rotation={nodes["storeroom-wall-3"].rotation}
-        scale={nodes["storeroom-wall-3"].scale}
-      >
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
-
-      <mesh
-        geometry={(nodes["storeroom-wall-4"] as THREE.Mesh).geometry}
-        position={nodes["storeroom-wall-4"].position}
-        rotation={nodes["storeroom-wall-4"].rotation}
-        scale={nodes["storeroom-wall-4"].scale}
-      >
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-        />
-      </mesh>
-
-      <mesh
-        geometry={(nodes["mirror"] as THREE.Mesh).geometry}
-        position={nodes["mirror"].position}
-        rotation={nodes["mirror"].rotation}
-        scale={nodes["mirror"].scale}
-      >
-        <shaderMaterial
-          vertexShader={mirrorVertexShader}
-          fragmentShader={mirrorFragmentShader}
-          uniforms={uniforms}
-        />
-      </mesh>
+      <Mirror nodes={nodes} />
     </group>
   );
 };

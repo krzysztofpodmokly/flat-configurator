@@ -14,5 +14,6 @@ export interface IEmission {
 }
 
 export interface IModelProps {
-  positionY: number;
+  // positionY: number;
+  uWallColor?: string;
 }

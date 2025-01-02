@@ -1,20 +1,25 @@
-import { useSnapScroll } from "../../hooks/useSnapScroll";
-import CameraRig from "../cameraRig/CameraRig";
+import { useControls } from "leva";
 import FloatingModel from "../shared/FloatingModel";
 
 type Props = {};
 
 function Experience({}: Props) {
-  const { position } = useSnapScroll();
+  const params = useControls({
+    diningRoom: "#abb4ac",
+    corridor: "#ced4da",
+    storeRoom: "#352208",
+    gamingRoom: "#343a40",
+    bedRoom: "#d8d8d8",
+  });
 
   return (
     <>
       {/* <CameraRig> */}
-      <FloatingModel model="all-rooms" positionY={0} />
-      {/* <FloatingModel model="dining-room" positionY={0} /> */}
-      {/* <FloatingModel model="bath-room" positionY={0} /> */}
-      {/* <FloatingModel model="gaming-room" positionY={0} /> */}
-      {/* <FloatingModel model="bed-room" positionY={0} /> */}
+      {/* <FloatingModel model="all-rooms" /> */}
+      {/* <FloatingModel model="dining-room" uWallColor={params.diningRoom} /> */}
+      {/* <FloatingModel model="bath-room" uWallColor={params.storeRoom} /> */}
+      <FloatingModel model="gaming-room" uWallColor={params.gamingRoom} />
+      {/* <FloatingModel model="bed-room" uWallColor={params.bedRoom} /> */}
       {/* </CameraRig> */}
     </>
   );

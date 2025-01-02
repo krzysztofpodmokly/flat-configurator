@@ -1,11 +1,11 @@
+uniform float uTime;
 varying vec2 vUv;
 
 void main() {
-  vec4 modelPosition = modelMatrix * vec4(position, 1.0);
-  vec4 viewPosition = viewMatrix * modelPosition;
-  vec4 projectionPosition = projectionMatrix * viewPosition;
+  vec3 updatedPosition = vec3(position.x, position.y, position.z);
+  
+  vec4 modelPosition = modelMatrix * vec4(updatedPosition, 1.0);
+  gl_Position = projectionMatrix * viewMatrix * modelPosition;
 
-  gl_Position = projectionPosition;
-
-  vUv = uv;
+  vUv = uv; 
 }

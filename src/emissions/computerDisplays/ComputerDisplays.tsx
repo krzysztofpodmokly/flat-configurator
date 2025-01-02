@@ -50,32 +50,36 @@ const ComputerDisplays = ({ nodes }: IEmission) => {
 
   return (
     <>
-      <mesh
-        geometry={(nodes["computer-display"] as THREE.Mesh).geometry}
-        position={nodes["computer-display"].position}
-        rotation={nodes["computer-display"].rotation}
-        scale={nodes["computer-display"].scale}
-      >
-        <shaderMaterial
-          fragmentShader={computerDisplayFragmentShader}
-          vertexShader={computerDisplayVertexShader}
-          uniforms={computerUniforms1}
-          ref={computerDisplay1}
-        />
-      </mesh>
-      <mesh
-        geometry={(nodes["computer-display-1"] as THREE.Mesh).geometry}
-        position={nodes["computer-display-1"].position}
-        rotation={nodes["computer-display-1"].rotation}
-        scale={nodes["computer-display-1"].scale}
-      >
-        <shaderMaterial
-          fragmentShader={computerDisplayFragmentShader}
-          vertexShader={computerDisplayVertexShader}
-          uniforms={computerUniforms2}
-          ref={computerDisplay2}
-        />
-      </mesh>
+      {nodes["computer-display"] && (
+        <mesh
+          geometry={(nodes["computer-display"] as THREE.Mesh).geometry}
+          position={nodes["computer-display"].position}
+          rotation={nodes["computer-display"].rotation}
+          scale={nodes["computer-display"].scale}
+        >
+          <shaderMaterial
+            fragmentShader={computerDisplayFragmentShader}
+            vertexShader={computerDisplayVertexShader}
+            uniforms={computerUniforms1}
+            ref={computerDisplay1}
+          />
+        </mesh>
+      )}
+      {nodes["computer-display-1"] && (
+        <mesh
+          geometry={(nodes["computer-display-1"] as THREE.Mesh).geometry}
+          position={nodes["computer-display-1"].position}
+          rotation={nodes["computer-display-1"].rotation}
+          scale={nodes["computer-display-1"].scale}
+        >
+          <shaderMaterial
+            fragmentShader={computerDisplayFragmentShader}
+            vertexShader={computerDisplayVertexShader}
+            uniforms={computerUniforms2}
+            ref={computerDisplay2}
+          />
+        </mesh>
+      )}
     </>
   );
 };

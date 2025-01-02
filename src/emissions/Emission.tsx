@@ -14,6 +14,7 @@ interface IEmission {
   params?: Record<string, string>;
   roomType?: string;
   uWallColor?: string;
+  extraUniforms?: any;
 }
 
 const Emission = ({
@@ -21,9 +22,8 @@ const Emission = ({
   image,
   fragmentShader,
   vertexShader,
-  // params,
-  // roomType,
   uWallColor,
+  extraUniforms,
 }: IEmission) => {
   const ref = useRef<THREE.ShaderMaterial>(null);
   const texture = image ? useTexture(image) : null;
@@ -49,6 +49,7 @@ const Emission = ({
       uDirection: new THREE.Uniform(true),
       uTexture: new THREE.Uniform(texture),
       uWall: new THREE.Uniform(new THREE.Color(uWallColor)),
+      ...extraUniforms,
     }),
     []
   );

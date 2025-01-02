@@ -17,21 +17,18 @@ const DiningWalls = ({ nodes, uWallColor }: Props) => {
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uWallColor={uWallColor}
-        // roomType="diningRoom"
       />
       <Emission
         node={nodes["dining-room-wall-2"] as THREE.Mesh}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uWallColor={uWallColor}
-        // roomType="diningRoom"
       />
       <Emission
         node={nodes["dining-room-wall-3"] as THREE.Mesh}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
         uWallColor={uWallColor}
-        // roomType="diningRoom"
       />
     </>
   );

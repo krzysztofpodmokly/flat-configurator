@@ -16,7 +16,7 @@ import BedroomWalls from "./BedroomWalls";
 import GamingWalls from "./GamingWalls";
 import StoreroomWalls from "./StoreroomWalls";
 
-const AllRooms = ({ positionY }: { positionY: number }) => {
+const AllRooms = ({ uWallColor }: { uWallColor: string }) => {
   const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
   const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");
   // const { position } = useStore((state) => state);
@@ -33,7 +33,7 @@ const AllRooms = ({ positionY }: { positionY: number }) => {
   });
 
   return (
-    <group position={[-3, positionY, 4]} rotation={[0, 0, 0]}>
+    <group position={[-3, 0, 4]} rotation={[0, 0, 0]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
@@ -45,7 +45,7 @@ const AllRooms = ({ positionY }: { positionY: number }) => {
       <GamingWalls nodes={nodes} uWallColor={params.gamingRoom} />
       <StoreroomWalls nodes={nodes} uWallColor={params.storeRoom} />
 
-      <ComputerDisplays nodes={nodes} params={params} />
+      <ComputerDisplays nodes={nodes} />
       <Mirror nodes={nodes} />
       <MoonLight nodes={nodes} />
 
