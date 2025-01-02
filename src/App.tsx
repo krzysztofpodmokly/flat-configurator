@@ -32,16 +32,16 @@ function App() {
         }}
       >
         <Suspense fallback={null}>
-          {/* <OrbitControls
-          target={[0, 0, 0]}
-          dampingFactor={0.1}
-          zoomSpeed={0.5}
-          minPolarAngle={0}
-          maxPolarAngle={Math.PI / 2.3}
-          maxDistance={20}
-          minDistance={10}
-          screenSpacePanning={false}
-        /> */}
+          <OrbitControls
+          // target={[0, 0, 0]}
+          // dampingFactor={0.1}
+          // zoomSpeed={0.5}
+          // minPolarAngle={0}
+          // maxPolarAngle={Math.PI / 2.3}
+          // maxDistance={20}
+          // minDistance={10}
+          // screenSpacePanning={false}
+          />
           <Environment background preset="sunset" backgroundBlurriness={0.5} />
           <Experience />
           {/* <PostProcessingEffects /> */}
