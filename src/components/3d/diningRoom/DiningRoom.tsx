@@ -11,7 +11,7 @@ import fragmentShader from "./shaders/fragment.glsl";
 import vertexShader from "./shaders/vertex.glsl";
 
 const palleteTv = ["#7ae582", "#25a18e", "#9fffcb", "#00a5cf", "#004e64"].map(
-  (color) => new THREE.Color(color)
+  (color) => new THREE.Color(color),
 );
 
 const palletePoster1 = [
@@ -30,10 +30,13 @@ const palletePoster2 = [
   "#fb8500",
 ].map((color) => new THREE.Color(color));
 
+useGLTF.preload("./models/diningRoom/dining-room-origin.glb");
+useTexture.preload("./models/diningRoom/dining-room-texture.jpg");
+
 const DiningRoom = ({ uWallColor }: IModelProps) => {
   const { nodes } = useGLTF("./models/diningRoom/dining-room-origin.glb");
   const bakedTexture = useTexture(
-    "./models/diningRoom/dining-room-texture.jpg"
+    "./models/diningRoom/dining-room-texture.jpg",
   );
 
   bakedTexture.flipY = false;
@@ -45,7 +48,7 @@ const DiningRoom = ({ uWallColor }: IModelProps) => {
       uColors: new THREE.Uniform(palleteTv),
       uTimeFactor: new THREE.Uniform(0.02),
     }),
-    []
+    [],
   );
 
   const poster1Uniforms = useMemo(
@@ -53,7 +56,7 @@ const DiningRoom = ({ uWallColor }: IModelProps) => {
       uColors: new THREE.Uniform(palletePoster1),
       uTimeFactor: new THREE.Uniform(0.04),
     }),
-    []
+    [],
   );
 
   const poster2Uniforms = useMemo(
@@ -61,11 +64,11 @@ const DiningRoom = ({ uWallColor }: IModelProps) => {
       uColors: new THREE.Uniform(palletePoster2),
       uTimeFactor: new THREE.Uniform(0.03),
     }),
-    []
+    [],
   );
 
   return (
-    <group position={[-10, 0, 4]} rotation={[0, 3, 0]} ref={ref}>
+    <group ref={ref} position={[0, 0, 0]} rotation={[0, 3, 0]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

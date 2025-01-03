@@ -22,10 +22,13 @@ const palletePoster = [
   "#772f1a",
 ].map((color) => new THREE.Color(color));
 
+useGLTF.preload("./models/gamingRoom/gaming-room.glb");
+useTexture.preload("./models/gamingRoom/gaming-baked-texture.jpg");
+
 const GamingRoom = ({ uWallColor }: IModelProps) => {
   const { nodes } = useGLTF("./models/gamingRoom/gaming-room.glb");
   const bakedTexture = useTexture(
-    "./models/gamingRoom/gaming-baked-texture.jpg"
+    "./models/gamingRoom/gaming-baked-texture.jpg",
   );
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -35,11 +38,11 @@ const GamingRoom = ({ uWallColor }: IModelProps) => {
       uColors: new THREE.Uniform(palletePoster),
       uTimeFactor: new THREE.Uniform(0.03),
     }),
-    []
+    [],
   );
 
   return (
-    <group position={[-12, 0, 3]} rotation={[0, 5, 0]}>
+    <group position={[-12, 2, 5]} rotation={[0, 5, 0]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

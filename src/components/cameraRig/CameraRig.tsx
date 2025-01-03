@@ -12,12 +12,12 @@ export default function CameraRig({ children }: { children: React.ReactNode }) {
       // @ts-ignore
       groupRef.current.rotation,
       [
-        (-state.pointer.y * state.viewport.height) / 128,
-        (state.pointer.x * state.viewport.width) / 128,
+        (-state.pointer.y * state.viewport.height) / 32,
+        (state.pointer.x * state.viewport.width) / 32,
         0,
       ],
       0.5,
-      delta
+      delta,
     );
   });
 
