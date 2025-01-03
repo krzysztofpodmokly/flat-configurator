@@ -13,19 +13,18 @@ export interface FloatingModelProps {
   floatingRange?: [number, number];
   floatIntensity?: number;
   rotationIntensity?: number;
-  uWallColor?: string;
+  // uWallColor?: string;
+  // colorParams: any;
 }
 
-type ModelProps = {
-  uWallColor?: string;
-};
+// type ModelProps = Pick<FloatingModelProps, "uWallColor" | "colorParams">;
 
 const modelsMap = {
-  "all-rooms": (props: ModelProps) => <AllRooms {...props} />,
-  "dining-room": (props: ModelProps) => <DiningRoom {...props} />,
-  "bath-room": (props: ModelProps) => <BathRoom {...props} />,
-  "gaming-room": (props: ModelProps) => <GamingRoom {...props} />,
-  "bed-room": (props: ModelProps) => <BedRoom {...props} />,
+  allRooms: <AllRooms />,
+  diningRoom: <DiningRoom />,
+  storeRoom: <BathRoom />,
+  gamingRoom: <GamingRoom />,
+  bedRoom: <BedRoom />,
 };
 
 const FloatingModel = forwardRef<Group, FloatingModelProps>(
@@ -34,9 +33,8 @@ const FloatingModel = forwardRef<Group, FloatingModelProps>(
       model,
       floatSpeed = 1,
       rotationIntensity = 0.3,
-      floatIntensity = 0.1,
+      floatIntensity = 0.01,
       floatingRange = [-0.01, 0.01],
-      uWallColor,
     },
     ref,
   ) => {
@@ -48,7 +46,7 @@ const FloatingModel = forwardRef<Group, FloatingModelProps>(
           floatIntensity={floatIntensity}
           rotationIntensity={rotationIntensity}
         >
-          {modelsMap[model]({ uWallColor })}
+          {modelsMap[model]}
         </Float>
       </group>
     );

@@ -2,7 +2,6 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { useMemo } from "react";
 
-import { IModelProps } from "../../../interfaces";
 import Emission from "../../../emissions/Emission";
 import fragmentShader from "../../../shaders/gamingRoom/fragment.glsl";
 import vertexShader from "../../../shaders/gamingRoom/vertex.glsl";
@@ -13,6 +12,7 @@ import wallFragmentShader from "./shaders/fragment.glsl";
 import gradientFragmentShader from "./shaders/gradientFragment.glsl";
 import wallVertexShader from "./shaders/vertex.glsl";
 import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDisplays";
+import { useStore } from "../../../store/Store";
 
 const palletePoster = [
   "#585123",
@@ -25,11 +25,13 @@ const palletePoster = [
 useGLTF.preload("./models/gamingRoom/gaming-room.glb");
 useTexture.preload("./models/gamingRoom/gaming-baked-texture.jpg");
 
-const GamingRoom = ({ uWallColor }: IModelProps) => {
+const GamingRoom = () => {
   const { nodes } = useGLTF("./models/gamingRoom/gaming-room.glb");
   const bakedTexture = useTexture(
     "./models/gamingRoom/gaming-baked-texture.jpg",
   );
+  const gamingRoom = useStore((state) => state.roomColors.gamingRoom);
+
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -42,7 +44,7 @@ const GamingRoom = ({ uWallColor }: IModelProps) => {
   );
 
   return (
-    <group position={[-12, 2, 5]} rotation={[0, 5, 0]}>
+    <group position={[-9, 3.1, 1]} rotation={[0, 4.5, -0.3]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
@@ -51,19 +53,19 @@ const GamingRoom = ({ uWallColor }: IModelProps) => {
         node={nodes["gaming-room-wall-1"] as THREE.Mesh}
         vertexShader={wallVertexShader}
         fragmentShader={gradientFragmentShader}
-        uWallColor={uWallColor}
+        uWallColor={gamingRoom}
       />
       <Emission
         node={nodes["gaming-room-wall-2"] as THREE.Mesh}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
-        uWallColor={uWallColor}
+        uWallColor={gamingRoom}
       />
       <Emission
         node={nodes["gaming-room-wall-3"] as THREE.Mesh}
         vertexShader={wallVertexShader}
         fragmentShader={wallFragmentShader}
-        uWallColor={uWallColor}
+        uWallColor={gamingRoom}
       />
 
       <Emission

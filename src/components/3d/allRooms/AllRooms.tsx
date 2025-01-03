@@ -15,37 +15,34 @@ import CorridorWalls from "./CorridorWalls";
 import BedroomWalls from "./BedroomWalls";
 import GamingWalls from "./GamingWalls";
 import StoreroomWalls from "./StoreroomWalls";
+import { useStore } from "../../../store/Store";
 
 useGLTF.preload("./models/allRooms/all-rooms-compressed.glb");
 useTexture.preload("./models/allRooms/all-rooms-texture.jpg");
 
-const AllRooms = ({ uWallColor }: { uWallColor?: string }) => {
+const AllRooms = () => {
   const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
   const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
-  const params = useControls({
-    diningRoom: "#abb4ac",
-    corridor: "#ced4da",
-    storeRoom: "#352208",
-    gamingRoom: "#343a40",
-    bedRoom: "#d8d8d8",
-  });
+  const { diningRoom, corridor, storeRoom, bedRoom, gamingRoom } = useStore(
+    (state) => state.roomColors,
+  );
 
   return (
-    <group position={[-3, 0, 4]} rotation={[0, 0, 0]}>
+    <group position={[-5, 2, 7]} rotation={[0, 0, 0.2]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 
       <Posters nodes={nodes} />
-      <DiningWalls nodes={nodes} uWallColor={params.diningRoom} />
-      <CorridorWalls nodes={nodes} uWallColor={params.corridor} />
-      <BedroomWalls nodes={nodes} uWallColor={params.bedRoom} />
-      <GamingWalls nodes={nodes} uWallColor={params.gamingRoom} />
-      <StoreroomWalls nodes={nodes} uWallColor={params.storeRoom} />
+      <DiningWalls nodes={nodes} uWallColor={diningRoom} />
+      <CorridorWalls nodes={nodes} uWallColor={corridor} />
+      <BedroomWalls nodes={nodes} uWallColor={bedRoom} />
+      <GamingWalls nodes={nodes} uWallColor={gamingRoom} />
+      <StoreroomWalls nodes={nodes} uWallColor={storeRoom} />
 
       <ComputerDisplays nodes={nodes} />
       <Mirror nodes={nodes} />

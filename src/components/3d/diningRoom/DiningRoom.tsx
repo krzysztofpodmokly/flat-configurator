@@ -1,7 +1,6 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-import { IModelProps } from "../../../interfaces";
 import { useMemo, useRef } from "react";
 import Emission from "../../../emissions/Emission";
 import fragmentShaderWall from "../../../shaders/diningRoom/fragment.glsl";
@@ -9,6 +8,7 @@ import vertexShaderWall from "../../../shaders/diningRoom/vertex.glsl";
 
 import fragmentShader from "./shaders/fragment.glsl";
 import vertexShader from "./shaders/vertex.glsl";
+import { useStore } from "../../../store/Store";
 
 const palleteTv = ["#7ae582", "#25a18e", "#9fffcb", "#00a5cf", "#004e64"].map(
   (color) => new THREE.Color(color),
@@ -33,11 +33,12 @@ const palletePoster2 = [
 useGLTF.preload("./models/diningRoom/dining-room-origin.glb");
 useTexture.preload("./models/diningRoom/dining-room-texture.jpg");
 
-const DiningRoom = ({ uWallColor }: IModelProps) => {
+const DiningRoom = () => {
   const { nodes } = useGLTF("./models/diningRoom/dining-room-origin.glb");
   const bakedTexture = useTexture(
     "./models/diningRoom/dining-room-texture.jpg",
   );
+  const diningRoom = useStore((state) => state.roomColors.diningRoom);
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -68,7 +69,7 @@ const DiningRoom = ({ uWallColor }: IModelProps) => {
   );
 
   return (
-    <group ref={ref} position={[0, 0, 0]} rotation={[0, 3, 0]}>
+    <group ref={ref} position={[-11, 5.2, 8]} rotation={[0, 3, -0.1]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
@@ -101,14 +102,14 @@ const DiningRoom = ({ uWallColor }: IModelProps) => {
         node={nodes["wall-1"] as THREE.Mesh}
         vertexShader={vertexShaderWall}
         fragmentShader={fragmentShaderWall}
-        uWallColor={uWallColor}
+        uWallColor={diningRoom}
       />
 
       <Emission
         node={nodes["wall-2"] as THREE.Mesh}
         vertexShader={vertexShaderWall}
         fragmentShader={fragmentShaderWall}
-        uWallColor={uWallColor}
+        uWallColor={diningRoom}
       />
     </group>
   );

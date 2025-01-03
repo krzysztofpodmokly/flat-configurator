@@ -16,7 +16,7 @@ function Experience({}: Props) {
   return (
     <>
       {/* <CameraRig> */}
-      <FloatingModel model="all-rooms" />
+      {/* <FloatingModel model="all-rooms" /> */}
       {/* <FloatingModel model="dining-room" uWallColor={params.diningRoom} /> */}
       {/* <FloatingModel model="bath-room" uWallColor={params.storeRoom} /> */}
       {/* <FloatingModel model="gaming-room" uWallColor={params.gamingRoom} /> */}
