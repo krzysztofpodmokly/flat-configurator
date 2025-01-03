@@ -4,15 +4,17 @@ import BedRoom from "../3d/bedRoom/BedRoom";
 import GamingRoom from "../3d/gamingRoom/GamingRoom";
 import BathRoom from "../3d/bathRoom/BathRoom";
 import DiningRoom from "../3d/diningRoom/DiningRoom";
+import { forwardRef } from "react";
+import { Group } from "three";
 
-type FloatingModelProps = {
+export interface FloatingModelProps {
   model: keyof typeof modelsMap;
   floatSpeed?: number;
   floatingRange?: [number, number];
   floatIntensity?: number;
   rotationIntensity?: number;
   uWallColor?: string;
-};
+}
 
 type ModelProps = {
   uWallColor?: string;
@@ -26,24 +28,31 @@ const modelsMap = {
   "bed-room": (props: ModelProps) => <BedRoom {...props} />,
 };
 
-function FloatingModel({
-  model,
-  floatSpeed = 1,
-  rotationIntensity = 0.3,
-  floatIntensity = 0.1,
-  floatingRange = [-0.01, 0.01],
-  uWallColor,
-}: FloatingModelProps) {
-  return (
-    <Float
-      speed={floatSpeed}
-      floatingRange={floatingRange}
-      floatIntensity={floatIntensity}
-      rotationIntensity={rotationIntensity}
-    >
-      {modelsMap[model]({ uWallColor })}
-    </Float>
-  );
-}
+const FloatingModel = forwardRef<Group, FloatingModelProps>(
+  (
+    {
+      model,
+      floatSpeed = 1,
+      rotationIntensity = 0.3,
+      floatIntensity = 0.1,
+      floatingRange = [-0.01, 0.01],
+      uWallColor,
+    },
+    ref,
+  ) => {
+    return (
+      <group ref={ref}>
+        <Float
+          speed={floatSpeed}
+          floatingRange={floatingRange}
+          floatIntensity={floatIntensity}
+          rotationIntensity={rotationIntensity}
+        >
+          {modelsMap[model]({ uWallColor })}
+        </Float>
+      </group>
+    );
+  },
+);
 
 export default FloatingModel;

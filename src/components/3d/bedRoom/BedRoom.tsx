@@ -8,6 +8,9 @@ import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDispla
 import gamingPosterVertexShader2 from "../../../shaders/posters/poster2/vertex.glsl";
 import gamingPosterFragmentShader2 from "../../../shaders/posters/poster2/fragment.glsl";
 
+useGLTF.preload("./models/bedRoom/bedroom.glb");
+useTexture.preload("./models/bedRoom/bedroom-baked-texture.jpg");
+
 const BedRoom = ({ uWallColor }: { uWallColor?: string }) => {
   const { nodes } = useGLTF("./models/bedRoom/bedroom.glb");
   const bakedTexture = useTexture("./models/bedRoom/bedroom-baked-texture.jpg");
@@ -16,7 +19,7 @@ const BedRoom = ({ uWallColor }: { uWallColor?: string }) => {
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   return (
-    <group position={[-12, 0, 6]} rotation={[0, 5, 0]}>
+    <group position={[-9, 2, 6]} rotation={[0, 5, 0]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

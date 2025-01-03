@@ -16,6 +16,9 @@ import BedroomWalls from "./BedroomWalls";
 import GamingWalls from "./GamingWalls";
 import StoreroomWalls from "./StoreroomWalls";
 
+useGLTF.preload("./models/allRooms/all-rooms-compressed.glb");
+useTexture.preload("./models/allRooms/all-rooms-texture.jpg");
+
 const AllRooms = ({ uWallColor }: { uWallColor?: string }) => {
   const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
   const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");

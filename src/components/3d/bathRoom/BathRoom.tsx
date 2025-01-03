@@ -11,15 +11,18 @@ import { IModelProps } from "../../../interfaces";
 import Emission from "../../../emissions/Emission";
 import Mirror from "../../../emissions/mirror/Mirror";
 
+useGLTF.preload("./models/bathroom/bathroom-compressed.glb");
+useTexture.preload("./models/bathroom/bathroom-texture.jpg");
+
 const BathRoom = ({ uWallColor }: IModelProps) => {
-  const { nodes } = useGLTF("./models/bathroom/bathroom-compressed.glb");
+  const { nodes } = useGLTF("./models/bathroom/bathroom-compressed-origin.glb");
   const bakedTexture = useTexture("./models/bathroom/bathroom-texture.jpg");
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   return (
-    <group position={[-10, 0, 7]} rotation={[0, 2.1, 0]}>
+    <group position={[3, 0, 0]} rotation={[0, 2, 0]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

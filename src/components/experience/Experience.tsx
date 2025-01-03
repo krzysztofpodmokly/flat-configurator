@@ -1,5 +1,6 @@
 import { useControls } from "leva";
 import FloatingModel from "../shared/FloatingModel";
+import CameraRig from "../cameraRig/CameraRig";
 
 type Props = {};
 
