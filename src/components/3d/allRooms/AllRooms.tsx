@@ -1,14 +1,11 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import { useControls } from "leva";
 
 import dummyFragmentShader from "../../../shaders/dummy/fragment.glsl";
 import dummyVertexShader from "../../../shaders/dummy/vertex.glsl";
-
 import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDisplays";
 import Mirror from "../../../emissions/mirror/Mirror";
 import MoonLight from "../../../emissions/moonLight/MoonLight";
-
 import Posters from "./Posters";
 import DiningWalls from "./DiningWalls";
 import CorridorWalls from "./CorridorWalls";
@@ -32,7 +29,7 @@ const AllRooms = () => {
   );
 
   return (
-    <group position={[-5, 2, 7]} rotation={[0, 0, 0.2]}>
+    <group position={[-9, 5, 10]} rotation={[0, 0, 0.2]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

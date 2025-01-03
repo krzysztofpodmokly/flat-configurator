@@ -11,7 +11,7 @@ import Emission from "../../../emissions/Emission";
 import Mirror from "../../../emissions/mirror/Mirror";
 import { useStore } from "../../../store/Store";
 
-useGLTF.preload("./models/bathroom/bathroom-compressed.glb");
+useGLTF.preload("./models/bathroom/bathroom-compressed-origin.glb");
 useTexture.preload("./models/bathroom/bathroom-texture.jpg");
 
 const BathRoom = () => {
@@ -23,7 +23,7 @@ const BathRoom = () => {
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   return (
-    <group position={[-9, 3.5, 7]} rotation={[0, 2, 0]}>
+    <group position={[-14, 7.2, 14]} rotation={[0, 2, 0]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

@@ -13,11 +13,7 @@ export interface FloatingModelProps {
   floatingRange?: [number, number];
   floatIntensity?: number;
   rotationIntensity?: number;
-  // uWallColor?: string;
-  // colorParams: any;
 }
-
-// type ModelProps = Pick<FloatingModelProps, "uWallColor" | "colorParams">;
 
 const modelsMap = {
   allRooms: <AllRooms />,
@@ -32,9 +28,9 @@ const FloatingModel = forwardRef<Group, FloatingModelProps>(
     {
       model,
       floatSpeed = 1,
-      rotationIntensity = 0.3,
-      floatIntensity = 0.01,
-      floatingRange = [-0.01, 0.01],
+      rotationIntensity = 0.07,
+      floatIntensity = 0.3,
+      floatingRange = [-0.1, 0.1],
     },
     ref,
   ) => {

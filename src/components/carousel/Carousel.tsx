@@ -5,9 +5,7 @@ import { Center, Environment, View } from "@react-three/drei";
 import { useRef, useState } from "react";
 import FloatingModel, { FloatingModelProps } from "../shared/FloatingModel";
 import gsap from "gsap";
-import { useControls } from "leva";
 
-// import CameraRig from "./components/cameraRig/CameraRig";
 import Button from "../button/Button";
 import ViewCanvas from "../shared/ViewCanvas";
 import ColorPicker from "../colorPicker/ColorPicker";
@@ -58,14 +56,6 @@ const Carousel = () => {
   const [currentModelIndex, setCurrentModelIndex] = useState(0);
   const modelRef = useRef<THREE.Group>(null);
 
-  // const params = useControls({
-  //   diningRoom: "#abb4ac",
-  //   corridor: "#ced4da",
-  //   storeRoom: "#352208",
-  //   gamingRoom: "#343a40",
-  //   bedRoom: "#d8d8d8",
-  // });
-
   const changeModel = (index: number) => {
     if (!modelRef.current) return;
 
@@ -104,10 +94,6 @@ const Carousel = () => {
     <main className="carousel relative grid h-screen grid-rows-[auto,6fr,auto] justify-center overflow-hidden py-12 text-white">
       <div className="background absolute inset-0 bg-[#142135] opacity-50" />
 
-      {/* <h2 className="relative z-50 text-center text-5xl font-bold">
-        {MODELS[currentModelIndex].roomType}
-      </h2> */}
-
       <div className="grid grid-cols-[auto,minmax(300px,1200px),auto] items-center">
         <Button onClick={() => changeModel(currentModelIndex - 1)} />
         <View className="border-1 mx-5 aspect-auto h-[70vmin] min-h-40 rounded-xl border-2 border-white bg-white/10">
@@ -115,7 +101,6 @@ const Carousel = () => {
             <FloatingModel
               model={MODELS[currentModelIndex].name}
               ref={modelRef}
-              // colorParams={}
             />
           </Center>
           <Environment

@@ -69,7 +69,7 @@ const DiningRoom = () => {
   );
 
   return (
-    <group ref={ref} position={[-11, 5.2, 8]} rotation={[0, 3, -0.1]}>
+    <group ref={ref} position={[-14, 7.3, 11.2]} rotation={[0, 3, -0.1]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

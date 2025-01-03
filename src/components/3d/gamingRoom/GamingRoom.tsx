@@ -44,7 +44,7 @@ const GamingRoom = () => {
   );
 
   return (
-    <group position={[-9, 3.1, 1]} rotation={[0, 4.5, -0.3]}>
+    <group position={[-16, 7, 9]} rotation={[0, 4.5, -0.3]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>

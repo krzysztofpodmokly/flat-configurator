@@ -1,7 +1,6 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useRef, useState } from "react";
-import { Center, Environment, OrbitControls, View } from "@react-three/drei";
-// import PostProcessingEffects from "../../postprocessing/PostProcessingEffects";
+import { Suspense } from "react";
+import { View } from "@react-three/drei";
 
 const ViewCanvas = () => {
   return (
@@ -39,17 +38,8 @@ const ViewCanvas = () => {
           minDistance={10}
           screenSpacePanning={false}
         /> */}
-        <View.Port />
 
-        {/* <CameraRig> */}
-        {/* <Center>
-          <FloatingModel
-            model={MODELS[currentModelIndex].name}
-            ref={modelRef}
-          />
-        </Center> */}
-        {/* <Experience /> */}
-        {/* </CameraRig> */}
+        <View.Port />
         {/* <PostProcessingEffects /> */}
       </Suspense>
     </Canvas>

@@ -21,7 +21,7 @@ const BedRoom = () => {
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   return (
-    <group position={[-10, 2.4, 4]} rotation={[0, 4.5, -0.2]}>
+    <group position={[-16, 5.8, 11.5]} rotation={[0, 4.5, -0.3]}>
       <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
