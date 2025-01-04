@@ -1,11 +1,12 @@
 import { Float } from "@react-three/drei";
+import React, { forwardRef } from "react";
+import { Group } from "three";
+
 import AllRooms from "../3d/allRooms/AllRooms";
 import BedRoom from "../3d/bedRoom/BedRoom";
 import GamingRoom from "../3d/gamingRoom/GamingRoom";
 import BathRoom from "../3d/bathRoom/BathRoom";
 import DiningRoom from "../3d/diningRoom/DiningRoom";
-import React, { forwardRef } from "react";
-import { Group } from "three";
 
 export interface FloatingModelProps {
   model: keyof typeof modelsMap;

@@ -1,11 +1,10 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import { forwardRef, useMemo } from "react";
+import { useMemo } from "react";
 
 import Emission from "../../../emissions/Emission";
 import fragmentShader from "../../../shaders/gamingRoom/fragment.glsl";
 import vertexShader from "../../../shaders/gamingRoom/vertex.glsl";
-
 import flowFragmentShader from "../diningRoom/shaders/fragment.glsl";
 import flowVertexShader from "../diningRoom/shaders/vertex.glsl";
 import wallFragmentShader from "./shaders/fragment.glsl";

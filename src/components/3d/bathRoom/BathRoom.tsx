@@ -3,14 +3,11 @@ import * as THREE from "three";
 
 import fragmentShader from "../../../shaders/storeRoom/fragment.glsl";
 import vertexShader from "../../../shaders/storeRoom/vertex.glsl";
-
 import wallFragmentShader from "./shaders/fragment.glsl";
 import wallVertexShader from "./shaders/vertex.glsl";
-
 import Emission from "../../../emissions/Emission";
 import Mirror from "../../../emissions/mirror/Mirror";
 import { useStore } from "../../../store/Store";
-import { forwardRef } from "react";
 
 useGLTF.preload("./models/bathroom/bathroom-compressed-origin.glb");
 useTexture.preload("./models/bathroom/bathroom-texture.jpg");

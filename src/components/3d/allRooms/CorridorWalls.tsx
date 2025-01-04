@@ -1,4 +1,5 @@
 import * as THREE from "three";
+
 import Emission from "../../../emissions/Emission";
 import fragmentShader from "../../../shaders/corridor/fragment.glsl";
 import vertexShader from "../../../shaders/corridor/vertex.glsl";

@@ -13,7 +13,6 @@ import BedroomWalls from "./BedroomWalls";
 import GamingWalls from "./GamingWalls";
 import StoreroomWalls from "./StoreroomWalls";
 import { useStore } from "../../../store/Store";
-import { forwardRef } from "react";
 
 useGLTF.preload("./models/allRooms/all-rooms-compressed.glb");
 useTexture.preload("./models/allRooms/all-rooms-texture.jpg");

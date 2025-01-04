@@ -1,10 +1,10 @@
 import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
 
 import mirrorFragmentShader from "../../shaders/mirror/fragment.glsl";
 import mirrorVertexShader from "../../shaders/mirror/vertex.glsl";
 import { IEmission } from "../../interfaces";
 import { useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
 
 const Mirror = ({ nodes }: IEmission) => {
   const mirrorRef = useRef<THREE.ShaderMaterial>(null);
@@ -23,7 +23,7 @@ const Mirror = ({ nodes }: IEmission) => {
       uColorA: new THREE.Uniform(new THREE.Color("#fdf0d5")),
       uColorB: new THREE.Uniform(new THREE.Color("#03045e")),
     }),
-    []
+    [],
   );
 
   return (

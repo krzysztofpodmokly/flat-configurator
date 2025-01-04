@@ -1,11 +1,11 @@
 import * as THREE from "three";
 import { useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { useTexture } from "@react-three/drei";
 
 import computerDisplayFragmentShader from "../../shaders/computerDisplays/fragment.glsl";
 import computerDisplayVertexShader from "../../shaders/computerDisplays/vertex.glsl";
 import { IEmission } from "../../interfaces";
-import { useFrame } from "@react-three/fiber";
-import { useTexture } from "@react-three/drei";
 
 const ComputerDisplays = ({ nodes }: IEmission) => {
   const computerDisplay1 = useRef<THREE.ShaderMaterial>(null);
@@ -24,7 +24,7 @@ const ComputerDisplays = ({ nodes }: IEmission) => {
       uTime: new THREE.Uniform(0),
       uHorizontal: new THREE.Uniform(false),
     }),
-    []
+    [],
   );
 
   const computerUniforms2 = useMemo(
@@ -33,7 +33,7 @@ const ComputerDisplays = ({ nodes }: IEmission) => {
       uTime: new THREE.Uniform(0),
       uHorizontal: new THREE.Uniform(true),
     }),
-    []
+    [],
   );
 
   useFrame((state) => {

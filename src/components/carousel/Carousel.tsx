@@ -1,11 +1,9 @@
 import * as THREE from "three";
-
 import { Center, View } from "@react-three/drei";
-
 import { useRef, useState } from "react";
-import FloatingModel, { FloatingModelProps } from "../shared/FloatingModel";
 import gsap from "gsap";
 
+import FloatingModel, { FloatingModelProps } from "../shared/FloatingModel";
 import Button from "../button/Button";
 import ViewCanvas from "../shared/ViewCanvas";
 import ColorPicker from "../colorPicker/ColorPicker";
@@ -98,8 +96,6 @@ const Carousel = () => {
         },
         "-=1.0",
       );
-
-    // setCurrentModelIndex(nextIndex);
   };
 
   const currentColor =
@@ -116,7 +112,7 @@ const Carousel = () => {
           onClick={() => changeModel(currentModelIndex - 1)}
           className="max-md:hidden"
         />
-        <View className="border-1 mx-5 aspect-auto h-[70vmin] min-h-40 rounded-xl border-2 border-white bg-white/10">
+        <View className="border-1 mx-2 aspect-auto h-[70vmin] min-h-40 rounded-xl border-2 border-white bg-white/10">
           <Center position={MODELS[currentModelIndex].position}>
             <FloatingModel
               model={MODELS[currentModelIndex].name}
