@@ -38,7 +38,7 @@ The following tools and libraries were used to build this project:
    npm run dev
    ```
 
-   The application will be available at `http://localhost:5137`.
+   The application will be available at [http://localhost:5137](http://localhost:5137).
 
 4. **Build for production**
    ```bash
@@ -48,7 +48,7 @@ The following tools and libraries were used to build this project:
 
 ## Live
 
-Site is available at `https://flat-configurator.vercel.app/`
+Site is available here - [Flat Configurator](https://flat-configurator.vercel.app/)
 
 ## Usage
 
