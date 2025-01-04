@@ -1,7 +1,7 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-import { useMemo, useRef } from "react";
+import { forwardRef, useMemo } from "react";
 import Emission from "../../../emissions/Emission";
 import fragmentShaderWall from "../../../shaders/diningRoom/fragment.glsl";
 import vertexShaderWall from "../../../shaders/diningRoom/vertex.glsl";
@@ -42,7 +42,6 @@ const DiningRoom = () => {
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
-  const ref = useRef<THREE.Group>(null);
 
   const tvUniforms = useMemo(
     () => ({
@@ -69,8 +68,13 @@ const DiningRoom = () => {
   );
 
   return (
-    <group ref={ref} position={[-14, 7.3, 11.2]} rotation={[0, 3, -0.1]}>
-      <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
+    <group position={[-22, 13, 18]} rotation={[0, 3, -0.1]}>
+      <mesh
+        geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
+        position={(nodes["merged-geometry"] as THREE.Mesh).position}
+        rotation={(nodes["merged-geometry"] as THREE.Mesh).rotation}
+        scale={(nodes["merged-geometry"] as THREE.Mesh).scale}
+      >
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 

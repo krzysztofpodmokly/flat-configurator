@@ -1,6 +1,6 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import { useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 
 import Emission from "../../../emissions/Emission";
 import fragmentShader from "../../../shaders/gamingRoom/fragment.glsl";
@@ -44,8 +44,13 @@ const GamingRoom = () => {
   );
 
   return (
-    <group position={[-16, 7, 9]} rotation={[0, 4.5, -0.3]}>
-      <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
+    <group position={[-23, 12.5, 15.5]} rotation={[0, 4.5, -0.3]}>
+      <mesh
+        geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
+        position={(nodes["merged-geometry"] as THREE.Mesh).position}
+        rotation={(nodes["merged-geometry"] as THREE.Mesh).rotation}
+        scale={(nodes["merged-geometry"] as THREE.Mesh).scale}
+      >
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 

@@ -8,6 +8,7 @@ import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDispla
 import gamingPosterVertexShader2 from "../../../shaders/posters/poster2/vertex.glsl";
 import gamingPosterFragmentShader2 from "../../../shaders/posters/poster2/fragment.glsl";
 import { useStore } from "../../../store/Store";
+import { forwardRef } from "react";
 
 useGLTF.preload("./models/bedRoom/bedroom.glb");
 useTexture.preload("./models/bedRoom/bedroom-baked-texture.jpg");
@@ -20,9 +21,15 @@ const BedRoom = () => {
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
+  // position={[-16, 5.8, 11.5]} rotation={[0, 4.5, -0.3]}
   return (
-    <group position={[-16, 5.8, 11.5]} rotation={[0, 4.5, -0.3]}>
-      <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
+    <group position={[-23, 11.7, 17.5]} rotation={[0, 4.5, -0.3]}>
+      <mesh
+        geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
+        position={(nodes["merged-geometry"] as THREE.Mesh).position}
+        rotation={(nodes["merged-geometry"] as THREE.Mesh).rotation}
+        scale={(nodes["merged-geometry"] as THREE.Mesh).scale}
+      >
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 

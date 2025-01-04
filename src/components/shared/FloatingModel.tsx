@@ -4,7 +4,7 @@ import BedRoom from "../3d/bedRoom/BedRoom";
 import GamingRoom from "../3d/gamingRoom/GamingRoom";
 import BathRoom from "../3d/bathRoom/BathRoom";
 import DiningRoom from "../3d/diningRoom/DiningRoom";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { Group } from "three";
 
 export interface FloatingModelProps {
@@ -28,12 +28,14 @@ const FloatingModel = forwardRef<Group, FloatingModelProps>(
     {
       model,
       floatSpeed = 1,
-      rotationIntensity = 0.07,
+      rotationIntensity = 0.03,
       floatIntensity = 0.3,
       floatingRange = [-0.1, 0.1],
     },
     ref,
   ) => {
+    const ModelComponent = modelsMap[model];
+
     return (
       <group ref={ref}>
         <Float
@@ -42,7 +44,7 @@ const FloatingModel = forwardRef<Group, FloatingModelProps>(
           floatIntensity={floatIntensity}
           rotationIntensity={rotationIntensity}
         >
-          {modelsMap[model]}
+          {React.cloneElement(ModelComponent)}
         </Float>
       </group>
     );

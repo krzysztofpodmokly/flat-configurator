@@ -13,6 +13,7 @@ import BedroomWalls from "./BedroomWalls";
 import GamingWalls from "./GamingWalls";
 import StoreroomWalls from "./StoreroomWalls";
 import { useStore } from "../../../store/Store";
+import { forwardRef } from "react";
 
 useGLTF.preload("./models/allRooms/all-rooms-compressed.glb");
 useTexture.preload("./models/allRooms/all-rooms-texture.jpg");
@@ -29,8 +30,13 @@ const AllRooms = () => {
   );
 
   return (
-    <group position={[-9, 5, 10]} rotation={[0, 0, 0.2]}>
-      <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
+    <group position={[-16.5, 10.5, 17.5]} rotation={[0, 0.15, 0.2]}>
+      <mesh
+        geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
+        position={(nodes["merged-geometry"] as THREE.Mesh).position}
+        rotation={(nodes["merged-geometry"] as THREE.Mesh).rotation}
+        scale={(nodes["merged-geometry"] as THREE.Mesh).scale}
+      >
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 

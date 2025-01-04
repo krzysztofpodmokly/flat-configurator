@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import { View } from "@react-three/drei";
+import { Environment, OrbitControls, View } from "@react-three/drei";
 
 const ViewCanvas = () => {
   return (
@@ -38,6 +38,11 @@ const ViewCanvas = () => {
           minDistance={10}
           screenSpacePanning={false}
         /> */}
+        <Environment
+          files="/hdr/lobby.hdr"
+          environmentIntensity={0.6}
+          environmentRotation={[0, 3, 0]}
+        />
 
         <View.Port />
         {/* <PostProcessingEffects /> */}

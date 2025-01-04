@@ -10,6 +10,7 @@ import wallVertexShader from "./shaders/vertex.glsl";
 import Emission from "../../../emissions/Emission";
 import Mirror from "../../../emissions/mirror/Mirror";
 import { useStore } from "../../../store/Store";
+import { forwardRef } from "react";
 
 useGLTF.preload("./models/bathroom/bathroom-compressed-origin.glb");
 useTexture.preload("./models/bathroom/bathroom-texture.jpg");
@@ -23,8 +24,13 @@ const BathRoom = () => {
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
   return (
-    <group position={[-14, 7.2, 14]} rotation={[0, 2, 0]}>
-      <mesh geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}>
+    <group position={[-21.8, 12.8, 20.7]} rotation={[0, 2.1, 0]}>
+      <mesh
+        geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
+        position={(nodes["merged-geometry"] as THREE.Mesh).position}
+        rotation={(nodes["merged-geometry"] as THREE.Mesh).rotation}
+        scale={(nodes["merged-geometry"] as THREE.Mesh).scale}
+      >
         <meshBasicMaterial map={bakedTexture} />
       </mesh>
 

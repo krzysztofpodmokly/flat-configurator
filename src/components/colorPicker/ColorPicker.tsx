@@ -9,16 +9,11 @@ type Props = {
 const ColorPicker = ({ roomType }: Props) => {
   const { roomColors, setRoomColor } = useStore((state) => state);
   return (
-    <div className="color-picker absolute h-4 w-4">
+    <div className="color-picker top-0 md:absolute md:right-[-220px]">
       <HexColorPicker
         color={roomColors[roomType]}
-        onChange={(color) => {
-          console.log("color", roomType);
-
-          setRoomColor(roomType, color);
-        }}
+        onChange={(color) => setRoomColor(roomType, color)}
       />
-      <p>selected: {roomColors[roomType]}</p>
     </div>
   );
 };
