@@ -29,11 +29,11 @@ const palletePoster2 = [
   "#fb8500",
 ].map((color) => new THREE.Color(color));
 
-useGLTF.preload("./models/diningRoom/dining-room-origin.glb");
+useGLTF.preload("./models/diningRoom/dining-room.glb");
 useTexture.preload("./models/diningRoom/dining-room-texture.jpg");
 
 const DiningRoom = () => {
-  const { nodes } = useGLTF("./models/diningRoom/dining-room-origin.glb");
+  const { nodes } = useGLTF("./models/diningRoom/dining-room.glb");
   const bakedTexture = useTexture(
     "./models/diningRoom/dining-room-texture.jpg",
   );

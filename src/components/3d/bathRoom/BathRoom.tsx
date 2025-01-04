@@ -9,11 +9,11 @@ import Emission from "../../../emissions/Emission";
 import Mirror from "../../../emissions/mirror/Mirror";
 import { useStore } from "../../../store/Store";
 
-useGLTF.preload("./models/bathroom/bathroom-compressed-origin.glb");
+useGLTF.preload("./models/bathroom/bathroom.glb");
 useTexture.preload("./models/bathroom/bathroom-texture.jpg");
 
 const BathRoom = () => {
-  const { nodes } = useGLTF("./models/bathroom/bathroom-compressed-origin.glb");
+  const { nodes } = useGLTF("./models/bathroom/bathroom.glb");
   const bakedTexture = useTexture("./models/bathroom/bathroom-texture.jpg");
   const storeRoom = useStore((state) => state.roomColors.storeRoom);
 

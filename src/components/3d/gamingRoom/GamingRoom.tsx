@@ -22,13 +22,11 @@ const palletePoster = [
 ].map((color) => new THREE.Color(color));
 
 useGLTF.preload("./models/gamingRoom/gaming-room.glb");
-useTexture.preload("./models/gamingRoom/gaming-baked-texture.jpg");
+useTexture.preload("./models/gamingRoom/gaming-texture.jpg");
 
 const GamingRoom = () => {
   const { nodes } = useGLTF("./models/gamingRoom/gaming-room.glb");
-  const bakedTexture = useTexture(
-    "./models/gamingRoom/gaming-baked-texture.jpg",
-  );
+  const bakedTexture = useTexture("./models/gamingRoom/gaming-texture.jpg");
   const gamingRoom = useStore((state) => state.roomColors.gamingRoom);
 
   bakedTexture.flipY = false;

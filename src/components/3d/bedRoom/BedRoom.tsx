@@ -10,11 +10,11 @@ import gamingPosterFragmentShader2 from "../../../shaders/posters/poster2/fragme
 import { useStore } from "../../../store/Store";
 
 useGLTF.preload("./models/bedRoom/bedroom.glb");
-useTexture.preload("./models/bedRoom/bedroom-baked-texture.jpg");
+useTexture.preload("./models/bedRoom/bedroom-texture.jpg");
 
 const BedRoom = () => {
   const { nodes } = useGLTF("./models/bedRoom/bedroom.glb");
-  const bakedTexture = useTexture("./models/bedRoom/bedroom-baked-texture.jpg");
+  const bakedTexture = useTexture("./models/bedRoom/bedroom-texture.jpg");
   const bedRoom = useStore((state) => state.roomColors.bedRoom);
 
   bakedTexture.flipY = false;

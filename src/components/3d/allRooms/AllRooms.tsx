@@ -14,11 +14,11 @@ import GamingWalls from "./GamingWalls";
 import StoreroomWalls from "./StoreroomWalls";
 import { useStore } from "../../../store/Store";
 
-useGLTF.preload("./models/allRooms/all-rooms-compressed.glb");
+useGLTF.preload("./models/allRooms/all-rooms.glb");
 useTexture.preload("./models/allRooms/all-rooms-texture.jpg");
 
 const AllRooms = () => {
-  const { nodes } = useGLTF("./models/allRooms/all-rooms-compressed.glb");
+  const { nodes } = useGLTF("./models/allRooms/all-rooms.glb");
   const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");
 
   bakedTexture.flipY = false;
