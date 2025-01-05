@@ -8,6 +8,8 @@ import vertexShaderWall from "../../../shaders/diningRoom/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 import vertexShader from "./shaders/vertex.glsl";
 import { useStore } from "../../../store/Store";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
+import { useThree } from "@react-three/fiber";
 
 const palleteTv = ["#7ae582", "#25a18e", "#9fffcb", "#00a5cf", "#004e64"].map(
   (color) => new THREE.Color(color),
@@ -38,9 +40,20 @@ const DiningRoom = () => {
     "./models/diningRoom/dining-room-texture.jpg",
   );
   const diningRoom = useStore((state) => state.roomColors.diningRoom);
+  const isMobile = useMediaQuery("(max-width: 640px)", true);
+  const { viewport } = useThree();
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
+
+  const mobileDimension = viewport.width / 10;
+  const scale: [number, number, number] = isMobile
+    ? [mobileDimension, mobileDimension, mobileDimension]
+    : [1, 1, 1];
+
+  const position: [number, number, number] = isMobile
+    ? [-16.5, 11, 15]
+    : [-22, 13, 18];
 
   const tvUniforms = useMemo(
     () => ({
@@ -67,7 +80,7 @@ const DiningRoom = () => {
   );
 
   return (
-    <group position={[-22, 13, 18]} rotation={[0, 3, -0.1]}>
+    <group position={position} rotation={[0, 3, -0.1]} scale={scale}>
       <mesh
         geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
         position={(nodes["merged-geometry"] as THREE.Mesh).position}

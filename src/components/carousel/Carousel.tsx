@@ -104,7 +104,7 @@ const Carousel = () => {
       : MODELS[currentModelIndex].name;
 
   return (
-    <main className="carousel relative flex h-screen flex-col justify-center overflow-hidden py-6 text-white md:block">
+    <main className="carousel font-body relative flex h-screen flex-col justify-start overflow-hidden text-white md:block md:justify-center md:py-6">
       <div className="background absolute inset-0 bg-[#d6ccc2] opacity-50" />
 
       <div className="grid w-screen grid-cols-1 items-center justify-center md:grid-cols-[auto,minmax(300px,1200px),auto]">
@@ -112,7 +112,7 @@ const Carousel = () => {
           onClick={() => changeModel(currentModelIndex - 1)}
           className="max-md:hidden"
         />
-        <View className="border-1 mx-2 aspect-auto h-[70vmin] min-h-40 rounded-xl border-2 border-white bg-white/10">
+        <View className="border-1 aspect-auto h-[60vh] min-h-40 border-b-2 border-white bg-white/10 md:mx-2 md:h-[70vmin] md:rounded-xl md:border-2">
           <Center position={MODELS[currentModelIndex].position}>
             <FloatingModel
               model={MODELS[currentModelIndex].name}
@@ -136,22 +136,29 @@ const Carousel = () => {
         />
       </div>
 
-      <div className="text-area relative mx-auto mt-6 w-fit text-center md:mt-5">
-        <div className="flex items-center justify-center rounded-xl border-2 border-white bg-white/10 p-3 text-2xl font-medium opacity-85 md:text-4xl">
+      <div className="text-area relative mx-auto mt-5 flex w-fit flex-col">
+        <div className="flex flex-col items-center justify-center border-white bg-white/30 p-3 text-xl font-medium opacity-85 md:rounded-lg md:border-2 md:text-4xl">
           <div className="flex">
             <p className="mx-3">{MODELS[currentModelIndex].roomType}</p> |
             <p className="mx-3">{MODELS[currentModelIndex].spec.area}</p>
           </div>
+        </div>
+        <div className="flex">
           <button
             onClick={() => setIsPickerVisible(!isPickerVisible)}
-            className="rounded-full border-2 border-white p-3"
-            style={{
-              backgroundColor: roomColors[currentColor],
-            }}
-          />
-        </div>
-        <div className="mx-auto mt-3 flex justify-center max-md:h-[250px]">
-          {isPickerVisible ? <ColorPicker roomType={currentColor} /> : null}
+            className="mt-2 flex h-fit items-center border-b-2 border-white bg-white/30 p-2 md:w-full md:justify-center md:rounded-lg"
+          >
+            Pick wall color
+            <div
+              className="ml-2 size-10 rounded-full border-2 border-white p-3"
+              style={{
+                backgroundColor: roomColors[currentColor],
+              }}
+            />
+          </button>
+          <div className="mx-auto mt-2 flex justify-center max-md:h-[250px] max-md:w-[200px]">
+            {isPickerVisible ? <ColorPicker roomType={currentColor} /> : null}
+          </div>
         </div>
       </div>
     </main>

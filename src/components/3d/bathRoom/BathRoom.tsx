@@ -8,6 +8,8 @@ import wallVertexShader from "./shaders/vertex.glsl";
 import Emission from "../../../emissions/Emission";
 import Mirror from "../../../emissions/mirror/Mirror";
 import { useStore } from "../../../store/Store";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
+import { useThree } from "@react-three/fiber";
 
 useGLTF.preload("./models/bathroom/bathroom.glb");
 useTexture.preload("./models/bathroom/bathroom-texture.jpg");
@@ -16,12 +18,23 @@ const BathRoom = () => {
   const { nodes } = useGLTF("./models/bathroom/bathroom.glb");
   const bakedTexture = useTexture("./models/bathroom/bathroom-texture.jpg");
   const storeRoom = useStore((state) => state.roomColors.storeRoom);
+  const isMobile = useMediaQuery("(max-width: 640px)", true);
+  const { viewport } = useThree();
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
+  const mobileDimension = viewport.width / 15;
+  const scale: [number, number, number] = isMobile
+    ? [mobileDimension, mobileDimension, mobileDimension]
+    : [1, 1, 1];
+
+  const position: [number, number, number] = isMobile
+    ? [-21, 12.5, 20]
+    : [-21.8, 12.8, 20.7];
+
   return (
-    <group position={[-21.8, 12.8, 20.7]} rotation={[0, 2.1, 0]}>
+    <group position={position} rotation={[0, 2.1, 0]} scale={scale}>
       <mesh
         geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
         position={(nodes["merged-geometry"] as THREE.Mesh).position}
