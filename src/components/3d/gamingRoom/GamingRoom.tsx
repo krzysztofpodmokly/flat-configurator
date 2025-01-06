@@ -12,8 +12,6 @@ import gradientFragmentShader from "./shaders/gradientFragment.glsl";
 import wallVertexShader from "./shaders/vertex.glsl";
 import ComputerDisplays from "../../../emissions/computerDisplays/ComputerDisplays";
 import { useStore } from "../../../store/Store";
-import { useMediaQuery } from "../../../hooks/useMediaQuery";
-import { useThree } from "@react-three/fiber";
 
 const palletePoster = [
   "#585123",
