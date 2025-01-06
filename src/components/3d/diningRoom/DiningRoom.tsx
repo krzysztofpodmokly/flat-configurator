@@ -80,7 +80,7 @@ const DiningRoom = () => {
   );
 
   return (
-    <group position={position} rotation={[0, 3, -0.1]} scale={scale}>
+    <group position={[-22, 13, 18]} rotation={[0, 3, -0.1]}>
       <mesh
         geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
         position={(nodes["merged-geometry"] as THREE.Mesh).position}

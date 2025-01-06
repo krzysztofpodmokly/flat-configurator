@@ -54,7 +54,7 @@ const GamingRoom = () => {
     : [-23, 12.5, 15.5];
 
   return (
-    <group position={position} rotation={[0, 4.5, -0.3]} scale={scale}>
+    <group position={[-23, 12.5, 15.5]} rotation={[0, 4.5, -0.3]}>
       <mesh
         geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
         position={(nodes["merged-geometry"] as THREE.Mesh).position}

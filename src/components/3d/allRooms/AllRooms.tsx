@@ -42,7 +42,7 @@ const AllRooms = () => {
     : [-16.5, 10.5, 17.5];
 
   return (
-    <group position={position} rotation={[0, 0.15, 0.2]} scale={scale}>
+    <group position={[-16.5, 10.5, 17.5]} rotation={[0, 0.15, 0.2]}>
       <mesh
         geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
         position={(nodes["merged-geometry"] as THREE.Mesh).position}

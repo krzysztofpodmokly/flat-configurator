@@ -34,7 +34,7 @@ const BathRoom = () => {
     : [-21.8, 12.8, 20.7];
 
   return (
-    <group position={position} rotation={[0, 2.1, 0]} scale={scale}>
+    <group position={[-21.8, 12.8, 20.7]} rotation={[0, 2.1, 0]}>
       <mesh
         geometry={(nodes["merged-geometry"] as THREE.Mesh).geometry}
         position={(nodes["merged-geometry"] as THREE.Mesh).position}
