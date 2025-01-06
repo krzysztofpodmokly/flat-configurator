@@ -30,8 +30,6 @@ const GamingRoom = () => {
   const { nodes } = useGLTF("./models/gamingRoom/gaming-room.glb");
   const bakedTexture = useTexture("./models/gamingRoom/gaming-texture.jpg");
   const gamingRoom = useStore((state) => state.roomColors.gamingRoom);
-  const isMobile = useMediaQuery("(max-width: 640px)", true);
-  const { viewport } = useThree();
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -43,15 +41,6 @@ const GamingRoom = () => {
     }),
     [],
   );
-
-  const mobileDimension = viewport.width / 9;
-  const scale: [number, number, number] = isMobile
-    ? [mobileDimension, mobileDimension, mobileDimension]
-    : [1, 1, 1];
-
-  const position: [number, number, number] = isMobile
-    ? [-20, 11.5, 13.5]
-    : [-23, 12.5, 15.5];
 
   return (
     <group position={[-23, 12.5, 15.5]} rotation={[0, 4.5, -0.3]}>

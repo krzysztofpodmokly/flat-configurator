@@ -13,8 +13,8 @@ import BedroomWalls from "./BedroomWalls";
 import GamingWalls from "./GamingWalls";
 import StoreroomWalls from "./StoreroomWalls";
 import { useStore } from "../../../store/Store";
-import { useThree } from "@react-three/fiber";
-import { useMediaQuery } from "../../../hooks/useMediaQuery";
+// import { useThree } from "@react-three/fiber";
+// import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
 useGLTF.preload("./models/allRooms/all-rooms.glb");
 useTexture.preload("./models/allRooms/all-rooms-texture.jpg");
@@ -22,8 +22,8 @@ useTexture.preload("./models/allRooms/all-rooms-texture.jpg");
 const AllRooms = () => {
   const { nodes } = useGLTF("./models/allRooms/all-rooms.glb");
   const bakedTexture = useTexture("./models/allRooms/all-rooms-texture.jpg");
-  const isMobile = useMediaQuery("(max-width: 640px)", true);
-  const { viewport } = useThree();
+  // const isMobile = useMediaQuery("(max-width: 640px)", true);
+  // const { viewport } = useThree();
 
   bakedTexture.flipY = false;
   bakedTexture.colorSpace = THREE.SRGBColorSpace;
@@ -32,14 +32,14 @@ const AllRooms = () => {
     (state) => state.roomColors,
   );
 
-  const mobileDimension = viewport.width / 11;
-  const scale: [number, number, number] = isMobile
-    ? [mobileDimension, mobileDimension, mobileDimension]
-    : [1, 1, 1];
+  // const mobileDimension = viewport.width / 11;
+  // const scale: [number, number, number] = isMobile
+  //   ? [mobileDimension, mobileDimension, mobileDimension]
+  //   : [1, 1, 1];
 
-  const position: [number, number, number] = isMobile
-    ? [-12, 9, 14]
-    : [-16.5, 10.5, 17.5];
+  // const position: [number, number, number] = isMobile
+  //   ? [-12, 9, 14]
+  //   : [-16.5, 10.5, 17.5];
 
   return (
     <group position={[-16.5, 10.5, 17.5]} rotation={[0, 0.15, 0.2]}>
